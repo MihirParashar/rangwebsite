@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - RANG</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="logo-link">
+                <svg class="logo" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                        <linearGradient id="rGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#FF8C42;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#FF6B1A;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="aGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#FF8C42;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#FFB366;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="nGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#E0E7FF;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="gGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#4ADE80;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#22C55E;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M20 20 L20 80 L45 80 L45 65 L55 65 L65 80 L85 80 L75 65 L65 65 L65 45 L55 45 L55 20 Z" fill="url(#rGradient)" stroke="#000" stroke-width="2.5" filter="url(#glow)"/>
+                    <path d="M25 25 L25 60 L50 60 L50 45 L55 45 L55 25 Z" fill="none" stroke="#000" stroke-width="1.5"/>
+                    <path d="M100 80 L115 45 L130 80 Z" fill="url(#aGradient)" stroke="#000" stroke-width="2.5" filter="url(#glow)"/>
+                    <path d="M107.5 70 L122.5 70" stroke="#000" stroke-width="2"/>
+                    <path d="M100 80 L130 80" stroke="#000" stroke-width="2.5"/>
+                    <path d="M150 80 L150 45 L170 80 L190 80 L190 45 L170 45 L170 70 L160 45 L150 45 Z" fill="url(#nGradient)" stroke="#000" stroke-width="2.5" filter="url(#glow)"/>
+                    <path d="M210 45 L250 45 L250 80 L225 80 L225 70 L240 70 L240 55 L215 55 L215 70 L225 70 L225 80 L210 80 Z" fill="url(#gGradient)" stroke="#000" stroke-width="2.5" filter="url(#glow)"/>
+                    <text x="200" y="105" font-family="Inter, sans-serif" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="500" letter-spacing="1px">@RANGLOVESYOU</text>
+                </svg>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link active">About</a>
+                <a href="content.html" class="nav-link">Content</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="merch.html" class="nav-link">Merch</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>About Rang</h1>
+            <p>Music artist, DJ, and event host bringing the energy to every performance</p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="page-content">
+        <div class="container">
+            <div class="grid grid-4" style="margin-bottom: 60px;">
+                <div class="card feature-card">
+                    <h3 style="font-size: 48px; margin-bottom: 10px;">50+</h3>
+                    <p style="color: var(--text-dim);">Tracks Released</p>
+                </div>
+                <div class="card feature-card">
+                    <h3 style="font-size: 48px; margin-bottom: 10px;">100K+</h3>
+                    <p style="color: var(--text-dim);">Followers</p>
+                </div>
+                <div class="card feature-card">
+                    <h3 style="font-size: 48px; margin-bottom: 10px;">200+</h3>
+                    <p style="color: var(--text-dim);">Events Hosted</p>
+                </div>
+                <div class="card feature-card">
+                    <h3 style="font-size: 48px; margin-bottom: 10px;">5★</h3>
+                    <p style="color: var(--text-dim);">Average Rating</p>
+                </div>
+            </div>
+
+            <!-- Journey Section -->
+            <div style="max-width: 900px; margin: 0 auto;">
+                <h2 style="font-size: 48px; text-align: center; margin-bottom: 50px; background: linear-gradient(135deg, var(--neon-orange), var(--neon-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">The Journey</h2>
+                
+                <div class="card" style="margin-bottom: 30px; border-left: 4px solid var(--neon-orange);">
+                    <h3 style="font-size: 32px; margin-bottom: 15px; color: var(--neon-orange);">Introduction</h3>
+                    <p style="color: var(--text-dim); line-height: 1.8; font-size: 18px;">
+                        Rang is a dynamic music artist and DJ known for bringing high-energy performances 
+                        to venues and events. With a passion for creating unforgettable experiences, Rang 
+                        has built a reputation as an exceptional host and performer.
+                    </p>
+                </div>
+
+                <div class="card" style="margin-bottom: 30px; border-left: 4px solid var(--neon-green);">
+                    <h3 style="font-size: 32px; margin-bottom: 15px; color: var(--neon-green);">What He Does</h3>
+                    <p style="color: var(--text-dim); line-height: 1.8; font-size: 18px; margin-bottom: 15px;">
+                        Rang specializes in:
+                    </p>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="color: var(--text-dim); line-height: 2; font-size: 18px; padding-left: 30px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--neon-orange);">▶</span>
+                            Live DJ performances at concerts and venues
+                        </li>
+                        <li style="color: var(--text-dim); line-height: 2; font-size: 18px; padding-left: 30px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--neon-orange);">▶</span>
+                            Event hosting and entertainment
+                        </li>
+                        <li style="color: var(--text-dim); line-height: 2; font-size: 18px; padding-left: 30px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--neon-orange);">▶</span>
+                            Original music production and releases
+                        </li>
+                        <li style="color: var(--text-dim); line-height: 2; font-size: 18px; padding-left: 30px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--neon-orange);">▶</span>
+                            Collaborations with other artists
+                        </li>
+                        <li style="color: var(--text-dim); line-height: 2; font-size: 18px; padding-left: 30px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--neon-orange);">▶</span>
+                            School and university event hosting
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card" style="border-left: 4px solid var(--neon-purple);">
+                    <h3 style="font-size: 32px; margin-bottom: 15px; color: var(--neon-purple);">Mission</h3>
+                    <p style="color: var(--text-dim); line-height: 1.8; font-size: 18px;">
+                        Creating memorable experiences through music, bringing people together, and 
+                        delivering top-tier entertainment that leaves audiences wanting more. Every 
+                        performance is crafted to be an unforgettable moment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <svg class="logo-small" viewBox="0 0 300 90" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="footerRGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FF8C42;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#FF6B1A;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="footerAGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#FF8C42;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="footerNGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#E0E7FF;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="footerGGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#4ADE80;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#22C55E;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M15 15 L15 60 L30 60 L30 45 L37.5 45 L45 60 L60 60 L52.5 45 L45 45 L45 30 L37.5 30 L37.5 15 Z" fill="url(#footerRGradient)" stroke="#000" stroke-width="1.5"/>
+                        <path d="M75 60 L82.5 37.5 L90 60 Z" fill="url(#footerAGradient)" stroke="#000" stroke-width="1.5"/>
+                        <path d="M82.5 52.5 L87.5 52.5" stroke="#000" stroke-width="1"/>
+                        <path d="M75 60 L90 60" stroke="#000" stroke-width="1.5"/>
+                        <path d="M105 60 L105 37.5 L120 60 L135 60 L135 37.5 L120 37.5 L120 52.5 L112.5 37.5 L105 37.5 Z" fill="url(#footerNGradient)" stroke="#000" stroke-width="1.5"/>
+                        <path d="M150 37.5 L180 37.5 L180 60 L165 60 L165 52.5 L172.5 52.5 L172.5 45 L157.5 45 L157.5 52.5 L165 52.5 L165 60 L150 60 Z" fill="url(#footerGGradient)" stroke="#000" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-icon" aria-label="Instagram">📷</a>
+                    <a href="#" class="social-icon" aria-label="YouTube">▶️</a>
+                    <a href="#" class="social-icon" aria-label="TikTok">🎵</a>
+                    <a href="#" class="social-icon" aria-label="Spotify">🎶</a>
+                    <a href="#" class="social-icon" aria-label="Twitch">🎮</a>
+                    <a href="#" class="social-icon" aria-label="Twitter">🐦</a>
+                    <a href="#" class="social-icon" aria-label="Facebook">👤</a>
+                    <a href="#" class="social-icon" aria-label="SoundCloud">🔊</a>
+                </div>
+                <div class="footer-copyright">
+                    © 2024 Rang. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

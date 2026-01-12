@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - RANG</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="logo-link">
+                <svg class="logo" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                        <linearGradient id="rGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#FF8C42;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#FF6B1A;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="aGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#FF8C42;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#FFB366;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="nGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#E0E7FF;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="gGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#4ADE80;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#22C55E;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M20 20 L20 80 L45 80 L45 65 L55 65 L65 80 L85 80 L75 65 L65 65 L65 45 L55 45 L55 20 Z" fill="url(#rGradient)" stroke="#000" stroke-width="2.5" filter="url(#glow)"/>
+                    <path d="M25 25 L25 60 L50 60 L50 45 L55 45 L55 25 Z" fill="none" stroke="#000" stroke-width="1.5"/>
+                    <path d="M100 80 L115 45 L130 80 Z" fill="url(#aGradient)" stroke="#000" stroke-width="2.5" filter="url(#glow)"/>
+                    <path d="M107.5 70 L122.5 70" stroke="#000" stroke-width="2"/>
+                    <path d="M100 80 L130 80" stroke="#000" stroke-width="2.5"/>
+                    <path d="M150 80 L150 45 L170 80 L190 80 L190 45 L170 45 L170 70 L160 45 L150 45 Z" fill="url(#nGradient)" stroke="#000" stroke-width="2.5" filter="url(#glow)"/>
+                    <path d="M210 45 L250 45 L250 80 L225 80 L225 70 L240 70 L240 55 L215 55 L215 70 L225 70 L225 80 L210 80 Z" fill="url(#gGradient)" stroke="#000" stroke-width="2.5" filter="url(#glow)"/>
+                    <text x="200" y="105" font-family="Inter, sans-serif" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="500" letter-spacing="1px">@RANGLOVESYOU</text>
+                </svg>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="content.html" class="nav-link">Content</a>
+                <a href="events.html" class="nav-link active">Events</a>
+                <a href="merch.html" class="nav-link">Merch</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Events & Tickets</h1>
+            <p>Upcoming performances and events. Get your tickets now!</p>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="page-content">
+        <div class="container">
+            <h2 style="font-size: 48px; text-align: center; margin-bottom: 50px; background: linear-gradient(135deg, var(--neon-orange), var(--neon-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Upcoming Events</h2>
+            
+            <div class="grid grid-3" style="margin-bottom: 80px;">
+                <!-- Event 1 -->
+                <div class="card">
+                    <h3 style="font-size: 28px; margin-bottom: 20px; color: var(--neon-orange);">University Spring Concert</h3>
+                    <div style="margin-bottom: 20px;">
+                        <p style="color: var(--text-dim); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: var(--neon-orange);">📅</span>
+                            Friday, March 15, 2024
+                        </p>
+                        <p style="color: var(--text-dim); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: var(--neon-orange);">🕐</span>
+                            8:00 PM
+                        </p>
+                        <p style="color: var(--text-dim); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: var(--neon-orange);">📍</span>
+                            Campus Auditorium
+                        </p>
+                        <p style="color: var(--text-dim); font-size: 14px; margin-left: 30px;">University Campus</p>
+                    </div>
+                    <a href="#" class="btn btn-primary" style="display: block; text-align: center; width: 100%;">Get Tickets</a>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="card">
+                    <h3 style="font-size: 28px; margin-bottom: 20px; color: var(--neon-orange);">Summer Music Festival</h3>
+                    <div style="margin-bottom: 20px;">
+                        <p style="color: var(--text-dim); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: var(--neon-orange);">📅</span>
+                            Thursday, June 20, 2024
+                        </p>
+                        <p style="color: var(--text-dim); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: var(--neon-orange);">🕐</span>
+                            7:00 PM
+                        </p>
+                        <p style="color: var(--text-dim); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: var(--neon-orange);">📍</span>
+                            Downtown Plaza
+                        </p>
+                        <p style="color: var(--text-dim); font-size: 14px; margin-left: 30px;">City Center</p>
+                    </div>
+                    <a href="#" class="btn btn-primary" style="display: block; text-align: center; width: 100%;">Get Tickets</a>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="card">
+                    <h3 style="font-size: 28px; margin-bottom: 20px; color: var(--neon-orange);">Club Night - Special Performance</h3>
+                    <div style="margin-bottom: 20px;">
+                        <p style="color: var(--text-dim); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: var(--neon-orange);">📅</span>
+                            Wednesday, April 10, 2024
+                        </p>
+                        <p style="color: var(--text-dim); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: var(--neon-orange);">🕐</span>
+                            10:00 PM
+                        </p>
+                        <p style="color: var(--text-dim); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: var(--neon-orange);">📍</span>
+                            The Venue
+                        </p>
+                        <p style="color: var(--text-dim); font-size: 14px; margin-left: 30px;">Downtown</p>
+                    </div>
+                    <a href="#" class="btn btn-primary" style="display: block; text-align: center; width: 100%;">Get Tickets</a>
+                </div>
+            </div>
+
+            <!-- Reviews Section -->
+            <h2 style="font-size: 48px; text-align: center; margin-bottom: 50px; background: linear-gradient(135deg, var(--neon-orange), var(--neon-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">What People Say</h2>
+            
+            <div class="grid grid-2">
+                <!-- Review 1 -->
+                <div class="card">
+                    <div style="display: flex; gap: 5px; margin-bottom: 15px;">
+                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                    </div>
+                    <p style="color: var(--text-light); font-style: italic; margin-bottom: 15px; line-height: 1.8; font-size: 18px;">
+                        "Rang was an incredible host! The energy was amazing and everyone had a great time. Highly recommend for any event!"
+                    </p>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: var(--neon-orange); font-weight: 600;">— Sarah M.</span>
+                        <span style="color: var(--text-dim); font-size: 14px;">University Fall Event</span>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="card">
+                    <div style="display: flex; gap: 5px; margin-bottom: 15px;">
+                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                    </div>
+                    <p style="color: var(--text-light); font-style: italic; margin-bottom: 15px; line-height: 1.8; font-size: 18px;">
+                        "Best DJ we've had at our school. Professional, engaging, and the music selection was perfect. 5 stars!"
+                    </p>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: var(--neon-orange); font-weight: 600;">— Michael T.</span>
+                        <span style="color: var(--text-dim); font-size: 14px;">Campus Spring Concert</span>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="card">
+                    <div style="display: flex; gap: 5px; margin-bottom: 15px;">
+                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                    </div>
+                    <p style="color: var(--text-light); font-style: italic; margin-bottom: 15px; line-height: 1.8; font-size: 18px;">
+                        "Rang knows how to keep a crowd engaged. The event was a huge success thanks to his performance."
+                    </p>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: var(--neon-orange); font-weight: 600;">— Jessica L.</span>
+                        <span style="color: var(--text-dim); font-size: 14px;">Student Union Event</span>
+                    </div>
+                </div>
+
+                <!-- Review 4 -->
+                <div class="card">
+                    <div style="display: flex; gap: 5px; margin-bottom: 15px;">
+                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                    </div>
+                    <p style="color: var(--text-light); font-style: italic; margin-bottom: 15px; line-height: 1.8; font-size: 18px;">
+                        "Outstanding host and performer. The students loved it and we're already planning to book again!"
+                    </p>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: var(--neon-orange); font-weight: 600;">— David K.</span>
+                        <span style="color: var(--text-dim); font-size: 14px;">Graduation Party</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <svg class="logo-small" viewBox="0 0 300 90" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="footerRGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FF8C42;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#FF6B1A;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="footerAGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#FF8C42;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="footerNGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#E0E7FF;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="footerGGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#4ADE80;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#22C55E;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M15 15 L15 60 L30 60 L30 45 L37.5 45 L45 60 L60 60 L52.5 45 L45 45 L45 30 L37.5 30 L37.5 15 Z" fill="url(#footerRGradient)" stroke="#000" stroke-width="1.5"/>
+                        <path d="M75 60 L82.5 37.5 L90 60 Z" fill="url(#footerAGradient)" stroke="#000" stroke-width="1.5"/>
+                        <path d="M82.5 52.5 L87.5 52.5" stroke="#000" stroke-width="1"/>
+                        <path d="M75 60 L90 60" stroke="#000" stroke-width="1.5"/>
+                        <path d="M105 60 L105 37.5 L120 60 L135 60 L135 37.5 L120 37.5 L120 52.5 L112.5 37.5 L105 37.5 Z" fill="url(#footerNGradient)" stroke="#000" stroke-width="1.5"/>
+                        <path d="M150 37.5 L180 37.5 L180 60 L165 60 L165 52.5 L172.5 52.5 L172.5 45 L157.5 45 L157.5 52.5 L165 52.5 L165 60 L150 60 Z" fill="url(#footerGGradient)" stroke="#000" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-icon" aria-label="Instagram">📷</a>
+                    <a href="#" class="social-icon" aria-label="YouTube">▶️</a>
+                    <a href="#" class="social-icon" aria-label="TikTok">🎵</a>
+                    <a href="#" class="social-icon" aria-label="Spotify">🎶</a>
+                    <a href="#" class="social-icon" aria-label="Twitch">🎮</a>
+                    <a href="#" class="social-icon" aria-label="Twitter">🐦</a>
+                    <a href="#" class="social-icon" aria-label="Facebook">👤</a>
+                    <a href="#" class="social-icon" aria-label="SoundCloud">🔊</a>
+                </div>
+                <div class="footer-copyright">
+                    © 2024 Rang. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
