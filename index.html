@@ -888,6 +888,8 @@ h1, h2, h3, h4, h5, h6 {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     will-change: transform, border-color, box-shadow;
+    display: block;
+    min-height: 100px;
 }
 
 .about-photos .tile--hero {
@@ -914,8 +916,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .about-photos .tile--wide {
     grid-area: wide;
-    aspect-ratio: 21 / 7;
+    aspect-ratio: 21 / 9;
     max-height: clamp(200px, 22vw, 300px);
+    min-height: 150px;
+    height: auto;
 }
 
 .photo-container:hover {
@@ -961,6 +965,13 @@ h1, h2, h3, h4, h5, h6 {
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     filter: brightness(0.95) contrast(1.05);
     will-change: transform, filter;
+}
+
+.photo-container.tile--wide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .photo-container:hover img {
@@ -2675,8 +2686,9 @@ h1, h2, h3, h4, h5, h6 {
 
     .about-photos .tile--wide {
         grid-area: wide;
-        aspect-ratio: 21 / 9; /* Changed from 21 / 7 to make it taller */
-        max-height: clamp(240px, 28vw, 360px); /* Increased max-height */
+        aspect-ratio: 21 / 9;
+        max-height: clamp(240px, 28vw, 360px);
+        min-height: 180px;
     }
 
     .contact {
@@ -2802,14 +2814,15 @@ h1, h2, h3, h4, h5, h6 {
 
     .about-photos .tile--hero,
     .about-photos .tile--top,
-    .about-photos .tile--mid,
-    .about-photos .tile--wide {
+    .about-photos .tile--mid {
         max-height: none;
         aspect-ratio: 16 / 10;
     }
 
     .about-photos .tile--wide {
+        max-height: none;
         aspect-ratio: 16 / 9;
+        grid-area: wide;
     }
 
     .hero-content {
