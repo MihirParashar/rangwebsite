@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RANG - Official</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0a1628;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        *::-webkit-scrollbar {
+            display: none;
+        }
+
+         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .banner-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Video banner (falls back to image) */
+        .banner-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: auto;
+            height: 120%;
+            min-width: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.95;
+        }
+
+        .banner {
+            width: 100%;
+            height: 120%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            will-change: transform;
+            z-index: 0;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            pointer-events: none;
+        }
+
+        .banner-content {
+            text-align: center;
+            color: #fff;
+            margin-top: 120px;
+            pointer-events: auto;
+        }
+
+        .banner-content h1 {
+            font-size: 4rem;
+            letter-spacing: 6px;
+            color: #ffd700;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            margin-bottom: 10px;
+        }
+
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+
+            background: rgba(10, 22, 40, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+        }
+
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-nav {
+            height: 30px;
+        }
+
+
+        .site-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .site-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 6px 10px;
+            border-radius: 8px;
+            transition: background 0.2s ease, transform 0.15s ease;
+        }
+
+        .site-nav a:hover {
+            cursor:pointer;
+            background: rgba(255,255,255,0.06);
+            transform: translateY(-2px);
+        }
+
+        .site-nav a.active {
+            background: linear-gradient(90deg, rgba(255,215,0,0.2), rgba(94,179,246,0.1));
+            color: #ffd700;
+        }
+
+        /* Sections added: about, music, videos, shows */
+        .about-section,
+        .music-section,
+        .videos-section,
+        .shows-section {
+            margin: 80px 0;
+            padding: 40px 20px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 12px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+        }
+
+        .about-grid h4 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .featured-player {
+            margin-bottom: 20px;
+        }
+
+        .track-slider {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .track-viewport {
+            width: 100%;
+            max-width: 900px;
+            overflow: hidden;
+        }
+
+        .track-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            will-change: transform;
+        }
+
+
+        .track-card {
+            min-width: 100%;
+            text-align: center;
+        }
+
+        .track-video {
+            aspect-ratio: 16 / 9;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .track-video iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Arrows */
+        .slider-btn {
+            background: rgba(255, 215, 0, 0.15);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            color: #ffd700;
+            font-size: 2rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .slider-btn:hover {
+            background: rgba(255, 215, 0, 0.35);
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .slider-btn {
+                display: none; /* swipe-only on mobile */
+            }
+        }
+
+
+        .track-title {
+            font-weight: 700;
+            color: #ffd700;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .shows-feature .recap-video {
+            width: 100%;
+            border-radius: 10px;
+            max-height: 480px;
+            object-fit: cover;
+            background: #000;
+        }
+
+        .custom-video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            height: 450px; /* fixed tall height */
+            overflow: hidden;
+            border-radius: 12px;
+            background: #000;
+        }
+
+        .custom-video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .custom-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            color: rgba(255, 255, 255, 0.7);
+            background: rgba(0, 0, 0, 0.3);
+            border: none;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .video-play-btn:hover {
+            background: rgba(0,0,0,0.5);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+
+
+        .upcoming-events ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .site-nav { padding: 12px 16px; }
+            .site-nav ul { display: none; } /* simple mobile behavior for now */
+            .about-grid { grid-template-columns: 1fr; }
+            .track-grid { grid-template-columns: 1fr; }
+            .video-grid { grid-template-columns: 1fr; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .tagline {
+            color: #ffd700;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 60px 0;
+            align-items: center;
+        }
+
+        .album-art {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .album-art.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .album-art img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .release-info {
+            padding: 20px;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+            transition-delay: 0.2s;
+        }
+
+        .release-info.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .release-info h2 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+
+        .release-info .subtitle {
+            font-size: 1.3rem;
+            color: #5eb3f6;
+            margin-bottom: 30px;
+        }
+
+        .streaming-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .btn.visible {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .btn:nth-child(1) { animation-delay: 0.1s; }
+        .btn:nth-child(2) { animation-delay: 0.2s; }
+        .btn:nth-child(3) { animation-delay: 0.3s; }
+        .btn:nth-child(4) { animation-delay: 0.4s; }
+        .btn:nth-child(5) { animation-delay: 0.5s; }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #0a1628;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(94, 179, 246, 0.2);
+            color: #5eb3f6;
+            border: 2px solid #5eb3f6;
+        }
+
+        .btn-secondary:hover {
+            background: #5eb3f6;
+            color: #0a1628;
+        }
+
+        .btn img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .music-player {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s ease;
+        }
+
+        .music-player.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .music-player iframe {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .contact-section {
+            margin: 80px 0 40px;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .contact-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .contact-section h3 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #ffd700;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .form-group.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .form-group:nth-child(1) { transition-delay: 0.1s; }
+        .form-group:nth-child(2) { transition-delay: 0.2s; }
+        .form-group:nth-child(3) { transition-delay: 0.3s; }
+        .form-group:nth-child(4) { transition-delay: 0.4s; }
+
+        .submit-button {
+            width: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            transition-delay: 0.5s;
+        }
+
+        .submit-button.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid rgba(94, 179, 246, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #5eb3f6;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .success-message {
+            display: none;
+            padding: 20px;
+            background: rgba(94, 179, 246, 0.2);
+            border: 2px solid #5eb3f6;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #5eb3f6;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(94, 179, 246, 0.2);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        footer.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.15);
+        }
+
+        .social-links img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .logo {
+                max-width: 250px;
+            }
+
+            .release-info h2 {
+                font-size: 2rem;
+            }
+
+            .streaming-links {
+                flex-direction: column;
+            }
+
+            .contact-section {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="banner-container">
+    <nav class="site-nav">
+        <div class="nav-inner container">
+            <img src="assets/rang logo.png" alt="RANG" class="logo-nav">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#music">Music</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#shows">Shows</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <img src="assets/banner.jpeg" alt="Banner" class="banner">
+</div>
+
+    
+    <div class="container">
+        <header>
+            <img src="assets/rang logo.png" alt="RANG" class="logo">
+            <div class="tagline">RAPPER • INFLUENCER • ARTIST</div>
+        </header>
+
+        <section class="hero">
+            <div class="album-art">
+                <img src="https://distrokid.imgix.net/http%3A%2F%2Fgather.fandalism.com%2F2306756--C6B208BF-E109-4999-9F8571ACCE7BEF82--0--1061448--pinkbandscoverart.png?fm=jpg&q=75&w=800&s=60440ee9ae05df3f806b33be3143885e" alt="Latest Release">
+            </div>
+            <div class="release-info">
+                <h2 style="color: #d8d8d8; -webkit-text-stroke: 2px #cb5fc2; /* Stroke width and color */">PINK BANDS</h2>
+                <div class="subtitle">Latest Single - Out Now</div>
+                <div class="streaming-links">
+                    <a href="SPOTIFY_LINK_HERE" class="btn btn-secondary" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png" alt="Spotify">
+                        SPOTIFY
+                    </a>
+                    <a href="APPLE_MUSIC_LINK_HERE" class="btn btn-secondary" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Apple_Music_icon.svg/2048px-Apple_Music_icon.svg.png" alt="Apple Music">
+                        APPLE MUSIC
+                    </a>
+                    <a href="https://youtu.be/zxJlntyZVAc" class="btn btn-secondary" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/2560px-YouTube_full-color_icon_%282017%29.svg.png" alt="YouTube">
+                        YOUTUBE
+                    </a>
+                    <a href="YT_MUSIC_LINK_HERE" class="btn btn-secondary" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Youtube_Music_icon.svg/2048px-Youtube_Music_icon.svg.png" alt="YouTube Music">
+                        YT MUSIC
+                    </a>
+                    <!-- <a href="DEEZER_LINK_HERE" class="btn btn-secondary" target="_blank">
+                        <img src="deezer.png" alt="Deezer">
+                        DEEZER
+                    </a> -->
+                </div>
+                <div class="music-player">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/zxJlntyZVAc?si=zECgOCuCkYPykE23" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <h3 style="text-align: center">ABOUT RANG</h3>
+            <br />
+            <div class="about-grid">
+                <div>
+                    <h4>Artist & Content Creator</h4>
+                    <p>Throws parties for audiences across the country and creates content that connects with fans.</p>
+                </div>
+                <div>
+                    <h4>Community</h4>
+                    <p>Built a following of over 200,000 with the help of his little sister.</p>
+                </div>
+                <div>
+                    <h4>Photos & Media</h4>
+                    <p>Check the 'Videos' and 'Shows' sections for recaps and highlights.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="music" class="music-section">
+            <h3 style="text-align: center">MUSIC</h3>
+            <br />
+            <div class="track-slider">
+                <button class="slider-btn prev" aria-label="Previous track">‹</button>
+
+                <div class="track-viewport">
+                    <div class="track-track">
+                        <div class="track-card">
+                            <div class="track-video">
+                                <iframe src="https://www.youtube.com/embed/4CRNfPgDhKM"
+                                        title="Campus Celebrity"
+                                        frameborder="0"
+                                        allowfullscreen></iframe>
+                            </div>
+                            <div class="track-title">Campus Celebrity</div>
+                        </div>
+
+                        <div class="track-card">
+                            <div class="track-video">
+                                <iframe src="https://www.youtube.com/embed/cnYNTUfVjkU"
+                                        title="Prince Ali"
+                                        frameborder="0"
+                                        allowfullscreen></iframe>
+                            </div>
+                            <div class="track-title">Prince Ali</div>
+                        </div>
+
+                        <div class="track-card">
+                            <div class="track-video">
+                                <iframe src="https://www.youtube.com/embed/4hgILXrHiNE"
+                                        title="Pretty Brown Eyes"
+                                        frameborder="0"
+                                        allowfullscreen></iframe>
+                            </div>
+                            <div class="track-title">Pretty Brown Eyes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="slider-btn next" aria-label="Next track">›</button>
+            </div>
+        </section>
+
+
+        <section id="videos" class="music-section">
+            <h3 style="text-align: center">VIDEOS</h3>
+            <br />
+            <div class="track-slider">
+                <button class="slider-btn prev" aria-label="Previous track">‹</button>
+
+                <div class="track-viewport">
+                    <div class="track-track">
+                        <div class="track-card">
+                            <div class="track-video">
+                                <iframe src="https://www.youtube.com/embed/T0kgOj1sBR4"
+                                        title="SNEAKING my sister into COLLEGE (Rang Tour Stop 1)"
+                                        frameborder="0"
+                                        allowfullscreen></iframe>
+                            </div>
+                            <div class="track-title">SNEAKING my sister into COLLEGE (Rang Tour Stop 1)</div>
+                        </div>
+
+                        <div class="track-card">
+                            <div class="track-video">
+                                <iframe src="https://www.youtube.com/embed/g4fFG-0rSFc"
+                                        title="Becoming the Real Life Indian Spiderman"
+                                        frameborder="0"
+                                        allowfullscreen></iframe>
+                            </div>
+                            <div class="track-title">Becoming the Real Life Indian Spiderman</div>
+                        </div>
+
+                        <div class="track-card">
+                            <div class="track-video">
+                                <iframe src="https://www.youtube.com/embed/dWEqTNLgxZ4"
+                                        title="Sneaking into Target and Stealing for 7 Hours!"
+                                        frameborder="0"
+                                        allowfullscreen></iframe>
+                            </div>
+                            <div class="track-title">Sneaking into Target and Stealing for 7 Hours!</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="slider-btn next" aria-label="Next track">›</button>
+            </div>
+        </section>
+
+        <section id="shows" class="shows-section">
+            <h3 style="text-align: center">SHOWS</h3>
+            <br />
+            <div class="shows-feature">
+                <div class="custom-video-container">
+                    <video 
+                    class="custom-video" 
+                    src="assets/Rang Night Recap.MOV" 
+                    poster="rangrecap.jpg"
+                    preload="metadata"
+                    playsinline
+                    muted
+                    ></video>
+                    <button class="video-play-btn">&#9658;</button> <!-- play icon -->
+                </div>
+            </div>
+            <div class="upcoming-events">
+                <h4>Upcoming Events</h4>
+                <ul>
+                    <li>Mar 12, 2026 — City, Venue</li>
+                    <li>Apr 08, 2026 — City, Venue</li>
+                    <li>Jun 21, 2026 — Festival Name</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h3>SPONSORSHIP &amp; BOOKING</h3>
+            <p style="text-align:center; margin-bottom:20px;">Sponsorship inquiries? Interested in booking Rang for your next event? Please fill out the form below.</p>
+            <div class="success-message" id="successMessage">
+                ✓ Message sent successfully! We'll get back to you soon.
+            </div>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Reason for Contact</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Select...</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="booking">Booking</option>
+                        <option value="sponsorship">Sponsorship</option>
+                        <option value="press">Press</option>
+                        <option value="collaboration">Collaboration</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary submit-button">SEND MESSAGE</button>
+            </form>
+        </section>
+
+        <footer>
+            <div class="social-links">
+                <a href="#" title="Instagram" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" alt="Instagram">
+                </a>
+                <a href="#" title="TikTok" target="_blank">
+                    <img style="border-radius: 10px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAABcCAMAAADUMSJqAAAA8FBMVEUAAAD////+LFUl9O4m+PL5//4cubX/8vX+JVH/LVi6ID/+GUsm/fcvCA+wHzwSdHH/oq9U9fAoBw1hESH/tsD/09oDFRQj6+X/yND/+Pn+CUUZp6P/boVzFCf/6Oz+3eKbGzUNV1UAGxlHTE5FAA1HDBj/iZvHI0PVJUfiJ0yAFCn6vcbwADyoAB9fGSVDcG5L2NMAZGFu/fgJOzqx+fYVjYmS+fUUmJTsFUUhBQr+UnATfnviADP/P2Nf5OFnABHX/Pri+Pj+lKQLSkjD9vSeQ1BeuLUex8Mb2tQHLSyl5uO9v8C+dX+EABv/fpP+ADqGLnt3AAADj0lEQVRoge3Z13raMBgGYEuIYGOHQBgGs9OyQhcj0EBJE5IW0kHv/24qyQN5hNjI6kEfvoOcYL/8ka2JJJ1yyinetC+YxI2faUxKceMo4QRdCcBzdt687ZzHjQM7XVnpxY0nbbxswL4wvKLCgTAcdFXlUhjeUJW8MByXnhGHAwgF4kX1WhwOhu8E4qDwXiAOih8E4qDyUSAOkp9G4nCQHOvViwn38B6MAzBFWkLXb8TgIDlLIG0uCMf801gcjpP93E/fCsNVqHBMfP8HnsqKxI1FkQ8vtZc38/nS7t8uXJaNWvNofHSmk2UbQpoeiEPY/1IrV47AS1Uds9bKbRuMK2kpY6y6th8WL1URctaFudzd13znMhCXznuyaqx22WG52Q2Hj3TNhqf3WEupCoGCcEnqZCDEX2AYKgyDVzWr6tmDBeGaMi/hOPUeVBQFhsE3VtlT51G9huPkr9O9weBV3LLvmK4YAg8Xy96XHSNeNe17IABvm/YDEIHrKMCOCZ/Twp+AEJzWPWPY4W6xWNTWcgw4LTy3pwvQkElI3+PGaYs7L0pqYUAahYQXb7sKrygqlWGvVa/XMy1OvOoqvEZtyO5MePAtYgovkDZRBh32Ag685Or2tGzPRpMDn2hM/ynSwj0LKA58RHC78DV5/eqeKzjwC4yPnccp+xqFC7/RmN65wPf69oEc+FJjnifGYcd7BWebO2PWDt/ru2LL4A01Ev6oJZDThchr7ruCdDIbb0bDrxDTPyuG/3mSJ+7g5Wg4Gbf2Q/lO9TWLqwevrTE+bPDzYpYTMvRsjmnh7LuqtCLg+G5moigb7nsniJ2lcLP5O9mhXLlmCs+RxMScXp0PCe57Vw8Ft0uF0Rvf9h8tE8g1rpF+EO0o51FDD4DN97b5Ly235pLDafEmGdciHitu0MyFJ3P6drPZJqyV6b7RyNATqckl+tCAOzO0X6nvv5gOyJEPuKqad9FyP7boMbPEW5HCW1Fx3FGAN8mn6XTqWjx26fQafSv+7F7fBmZIZ6noheNmP7BHZhv8uHPcx7tXbHM5E6kD7fP845BNlxwBs1To/HzZ7po2zyHur0owXVyp3LYkpdepALpmyPDYF4XNb7hzH0pUCgvVpCH/qfl53zBq2XKzgVMsrBd/TBrG9CtIfYB33aoqq/SvtVIfxHbYn++Zu257DwDTR77dwbmtZ/oDurEf9DJx/kJxyin/LH8BmyNVAz0TozkAAAAASUVORK5CYII=" alt="TikTok">
+                </a>
+                <a href="#" title="Twitter" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/2491px-Logo_of_Twitter.svg.png" alt="Twitter">
+                </a>
+                <a href="#" title="YouTube" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/2560px-YouTube_full-color_icon_%282017%29.svg.png" alt="YouTube">
+                </a>
+            </div>
+            <p style="margin-top: 20px; color: rgba(255, 255, 255, 0.5);">
+                Management: teamrang@rabbit.contact
+            </p>
+            <p style="margin-top: 10px; color: rgba(255, 255, 255, 0.3);">
+                © 2024 RANG. All Rights Reserved.
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Parallax effect for banner
+        const banner = document.querySelector('.banner');
+        const bannerContainer = document.querySelector('.banner-container');
+        
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const containerHeight = bannerContainer.offsetHeight;
+            
+            if (scrolled < containerHeight) {
+                const parallaxSpeed = 0.5;
+                banner.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+            }
+        });
+
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // For streaming buttons, trigger them individually
+                    if (entry.target.classList.contains('streaming-links')) {
+                        const buttons = entry.target.querySelectorAll('.btn');
+                        buttons.forEach(btn => btn.classList.add('visible'));
+                    }
+                    
+                    // For form groups
+                    if (entry.target.classList.contains('contact-form')) {
+                        const formGroups = entry.target.querySelectorAll('.form-group');
+                        formGroups.forEach(group => group.classList.add('visible'));
+                        const submitBtn = entry.target.querySelector('.submit-button');
+                        if (submitBtn) submitBtn.classList.add('visible');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const elementsToAnimate = document.querySelectorAll('.album-art, .release-info, .music-player, .contact-section, footer, .streaming-links, .contact-form, .about-section, .music-section, .videos-section, .shows-section');
+            elementsToAnimate.forEach(el => observer.observe(el));
+
+            // Smooth scroll for nav links
+            const navLinks = document.querySelectorAll('.site-nav a[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = document.querySelector(link.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Active nav on scroll (basic)
+            const sections = document.querySelectorAll('#about, #music, #videos, #shows, #contact');
+            const navItems = document.querySelectorAll('.site-nav a[href^="#"]');
+            const updateActive = () => {
+                let current = 0;
+                sections.forEach((sec, i) => {
+                    const rect = sec.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight * 0.35) current = i;
+                });
+                navItems.forEach(a => a.classList.remove('active'));
+                if (navItems[current]) navItems[current].classList.add('active');
+            };
+            updateActive();
+            window.addEventListener('scroll', updateActive);
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const successMsg = document.getElementById('successMessage');
+            successMsg.classList.add('show');
+            
+            this.reset();
+            
+            setTimeout(() => {
+                successMsg.classList.remove('show');
+            }, 5000);
+            
+            console.log('Form submitted:', {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            });
+        });
+    </script>
+    <script>
+        (() => {
+            // Find all sliders on the page
+            const sliders = document.querySelectorAll('.track-slider'); // container for each slideshow
+
+            sliders.forEach(slider => {
+                const track = slider.querySelector('.track-track');
+                const slides = Array.from(track.querySelectorAll('.track-card'));
+                const prev = slider.querySelector('.slider-btn.prev');
+                const next = slider.querySelector('.slider-btn.next');
+
+                if (!track || slides.length === 0 || !prev || !next) return; // safety check
+
+                let index = 1; // start at first real slide
+                let isTransitioning = false;
+
+                // Clone first and last slides
+                const firstClone = slides[0].cloneNode(true);
+                const lastClone = slides[slides.length - 1].cloneNode(true);
+                firstClone.classList.add('clone');
+                lastClone.classList.add('clone');
+
+                track.appendChild(firstClone);
+                track.insertBefore(lastClone, slides[0]);
+
+                const totalSlides = track.children.length;
+
+                // Set initial position
+                function setPosition(animate = true) {
+                    track.style.transition = animate ? 'transform 0.5s ease' : 'none';
+                    track.style.transform = `translateX(-${index * 100}%)`;
+                }
+
+                setPosition(false);
+
+                // Arrow click handlers
+                next.addEventListener('click', () => {
+                    if (isTransitioning) return;
+                    isTransitioning = true;
+                    index++;
+                    setPosition();
+                });
+
+                prev.addEventListener('click', () => {
+                    if (isTransitioning) return;
+                    isTransitioning = true;
+                    index--;
+                    setPosition();
+                });
+
+                // Handle clone wrap-around
+                track.addEventListener('transitionend', () => {
+                    if (track.children[index].classList.contains('clone')) {
+                        track.style.transition = 'none';
+                        if (index === 0) {
+                            index = slides.length; // last real slide
+                        } else if (index === totalSlides - 1) {
+                            index = 1; // first real slide
+                        }
+                        requestAnimationFrame(() => {
+                            track.style.transform = `translateX(-${index * 100}%)`;
+                            requestAnimationFrame(() => {
+                                track.style.transition = 'transform 0.5s ease';
+                                isTransitioning = false;
+                            });
+                        });
+                    } else {
+                        isTransitioning = false;
+                    }
+                });
+            });
+        })();
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const videoContainers = document.querySelectorAll('.custom-video-container');
+
+            const observerOptions = {
+                threshold: 0.5 // 50% visible
+            };
+
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                const video = entry.target.querySelector('.custom-video');
+                const btn = entry.target.querySelector('.video-play-btn');
+
+                if (entry.isIntersecting) {
+                    video.play().catch(() => {}); // autoplay might fail on some browsers
+                    btn.style.display = 'none';
+                } else {
+                    video.pause();
+                    btn.style.display = 'flex';
+                }
+                });
+            }, observerOptions);
+
+            videoContainers.forEach(container => videoObserver.observe(container));
+
+            // Play/pause toggle
+            videoContainers.forEach(container => {
+                const video = container.querySelector('.custom-video');
+                const btn = container.querySelector('.video-play-btn');
+
+                btn.addEventListener('click', () => {
+                if (video.paused) {
+                    video.play().catch(() => {});
+                    btn.style.display = 'none';
+                } else {
+                    video.pause();
+                    btn.style.display = 'flex';
+                }
+                });
+
+                // Also allow clicking the video itself
+                video.addEventListener('click', () => {
+                if (video.paused) {
+                    video.play().catch(() => {});
+                    btn.style.display = 'none';
+                } else {
+                    video.pause();
+                    btn.style.display = 'flex';
+                }
+                });
+            });
+            });
+    </script>
+</body>
+</html>

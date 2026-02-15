@@ -810,6 +810,33 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 0.2px;
 }
 
+.about-block {
+    background: rgba(0, 39, 76, 0.2);
+    border: 1px solid rgba(255, 203, 5, 0.15);
+    border-radius: 14px;
+    padding: 20px 22px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.about-block h3 {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.about-block p {
+    font-size: 16px;
+    color: var(--text-dim);
+    line-height: 1.7;
+}
+
+.about-block p + p {
+    margin-top: 10px;
+}
+
 .stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -991,6 +1018,286 @@ h1, h2, h3, h4, h5, h6 {
 
 .content-subsection:last-child {
     margin-bottom: 0;
+}
+
+.latest-single-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 32px;
+    align-items: center;
+    background: rgba(21, 26, 38, 0.6);
+    border: 1px solid rgba(255, 203, 5, 0.18);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.25);
+}
+
+.latest-single-art img {
+    width: 100%;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    display: block;
+    animation: latestSingleFloat 3s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes latestSingleFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.latest-single-title {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    font-family: 'Outfit', sans-serif;
+    text-align: center;
+}
+
+.latest-single-subtitle {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--primary);
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.latest-single-description {
+    font-size: 16px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+
+.latest-single-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.latest-single-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+    justify-content: center;
+}
+
+.latest-single-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.latest-single-video {
+    width: 100%;
+    margin-top: 18px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 203, 5, 0.15);
+}
+
+.latest-single-video iframe {
+    width: 100%;
+    border: none;
+    display: block;
+}
+
+.provider-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: rgba(0, 39, 76, 0.35);
+    border: 1px solid rgba(255, 203, 5, 0.2);
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.provider-link img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    display: block;
+}
+
+.provider-link:hover {
+    background: rgba(255, 203, 5, 0.18);
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.music-summary {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.music-summary p {
+    font-size: 16px;
+    color: var(--text-dim);
+    line-height: 1.7;
+}
+
+.linktree-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: #42E661;
+    color: #0A0E1A;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    width: auto;
+    width: fit-content;
+    text-decoration: none;
+    align-self: flex-start;
+}
+.linktree-btn img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    display: block;
+}
+
+.music-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.4px;
+}
+
+.content-highlights {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.content-highlight-card {
+    background: rgba(0, 39, 76, 0.25);
+    border: 1px solid rgba(255, 203, 5, 0.16);
+    border-radius: 14px;
+    padding: 20px;
+    min-height: 560px;
+}
+
+.content-highlight-title {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    color: var(--primary);
+    margin-bottom: 8px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.content-highlight-value {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: var(--text-light);
+}
+
+.content-highlight-note {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.6;
+}
+
+.content-highlight-embed {
+    margin-top: 14px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 203, 5, 0.15);
+}
+
+.content-highlight-embed iframe {
+    width: 100%;
+    height: 770px;
+    border: none;
+    display: block;
+}
+
+.content-carousel {
+    background: rgba(21, 26, 38, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 16px;
+    border: 1px solid rgba(255, 203, 5, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    margin-bottom: 28px;
+}
+
+.content-carousel .carousel-container {
+    height: 600px;
+}
+
+.carousel-slide iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 12px;
+}
+
+.connect-with {
+    text-align: center;
+}
+
+.connect-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--primary);
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.8px;
+}
+
+.connect-links {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.connect-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: rgba(0, 39, 76, 0.35);
+    border: 1px solid rgba(255, 203, 5, 0.2);
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.connect-link:hover {
+    background: rgba(255, 203, 5, 0.18);
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
 }
 
 .subsection-title {
@@ -1360,7 +1667,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Events Layout */
 .events-layout {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 1fr;
     gap: 40px;
     align-items: start;
 }
@@ -1390,6 +1697,34 @@ h1, h2, h3, h4, h5, h6 {
 /* Upcoming Events */
 .upcoming-events-section {
     width: 100%;
+}
+
+
+.events-media-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.events-media-card {
+    background: rgba(21, 26, 38, 0.7);
+    border: 1px solid rgba(255, 203, 5, 0.15);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.events-media-card img,
+.events-media-card video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.events-media-card video {
+    min-height: 260px;
+    background: #000;
 }
 
 .upcoming-event-card {
@@ -2353,6 +2688,11 @@ h1, h2, h3, h4, h5, h6 {
         gap: 24px;
     }
 
+    .events-media-grid {
+        grid-template-columns: 1fr;
+    }
+
+
     .featured-event-embed {
         padding: 14px;
     }
@@ -2442,6 +2782,10 @@ h1, h2, h3, h4, h5, h6 {
 
     .carousel-container {
         height: 160px;
+    }
+
+    .content-carousel .carousel-container {
+        height: 200px;
     }
 
     .events-carousel {
@@ -2762,6 +3106,27 @@ h1, h2, h3, h4, h5, h6 {
         gap: 10px;
     }
 
+    .latest-single-grid {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    .latest-single-title {
+        font-size: 22px;
+    }
+
+    .latest-single-description {
+        font-size: 14px;
+    }
+
+    .content-highlights {
+        grid-template-columns: 1fr;
+    }
+
+    .connect-links {
+        gap: 10px;
+    }
+
     .social-link-icon {
         padding: 12px 14px;
         font-size: 13px;
@@ -2829,6 +3194,10 @@ h1, h2, h3, h4, h5, h6 {
         padding-top: 110px;
     }
 
+    .latest-single-grid {
+        padding: 18px;
+    }
+
     .hero-social .social-icon {
         width: 38px;
         height: 38px;
@@ -2851,6 +3220,10 @@ h1, h2, h3, h4, h5, h6 {
 
     .carousel-container {
         height: 150px;
+    }
+
+    .content-carousel .carousel-container {
+        height: 190px;
     }
 
     .contact-form-wrapper {
@@ -2904,7 +3277,7 @@ h1, h2, h3, h4, h5, h6 {
     <section id="home" class="section hero">
         <div class="video-overlay"></div>
         <video autoplay playsinline muted loop preload="auto" class="hero-video" id="heroVideo">
-            <source src="us_1.mp4" type="video/mp4">
+            <source src="Rang Event Recap (only Rang).mov" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <button class="volume-toggle" id="volumeToggle" aria-label="Toggle sound">
@@ -2914,7 +3287,7 @@ h1, h2, h3, h4, h5, h6 {
             <div class="hero-logo-container">
                 <img src="rangw@2.png" alt="RANG" class="hero-logo">
             </div>
-            <p class="hero-subtitle">Artist • Content Creator</p>
+            <p class="hero-subtitle">Artist • Content Creator • Touring DJ</p>
             <div class="hero-buttons">
                 <a href="#content" class="btn btn-primary">Watch Content</a>
                 <a href="#events" class="btn btn-secondary">Latest Events</a>
@@ -2928,7 +3301,16 @@ h1, h2, h3, h4, h5, h6 {
             </div>
         </div>
     </section>
-
+     <!-- Notes: 
+        - Intro sketching too much? 
+        - Changed background video
+        - Added latest single section
+        - Linktree could be better
+        - Content tiktok/youtube too big
+        - Added slideshow
+        - Connect with rang is redundant? 
+        - Events section video background doesn't look good?
+    -->
     <!-- About Section -->
     <section id="about" class="section about">
         <div class="container">
@@ -2936,26 +3318,18 @@ h1, h2, h3, h4, h5, h6 {
             <div class="about-content">
                 <div class="about-left">
                     <div class="about-text">
-                        <p class="lead">Rang is a rising Indian rapper, streamer, and YouTuber bringing fresh energy to the music scene.</p>
-                        <p>A 23-year-old University of Michigan alum, Rang balances campus life and the stage, touring Michigan and other colleges across the US with high-energy performances that connect instantly with young audiences. Offstage, he’s creating music, streaming, and dropping YouTube content, building a loyal and fast-growing community.</p>
-                        <p>From late-night studio sessions to viral TikToks with his little sister Pia, Rang is always in motion—and his name is only getting closer to the headlines.</p>
-                    </div>
-                    <div class="stats">
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="200" data-suffix="K+">0K+</div>
-                            <div class="stat-label">Followers</div>
+                        <div class="about-block">
+                            <h3>Influence</h3>
+                            <p>200k+ followers and growing.</p>
+                            <p>Completed his first national tour, performing at colleges across the country.</p>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="10" data-suffix="+">0+</div>
-                            <div class="stat-label">Tracks</div>
+                        <div class="about-block">
+                            <h3>Identity</h3>
+                            <p>Be yourself. Family first. From making viral content with his little sister, Pia Famous, to his music videos, these are two things that Rang always stands for.</p>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="5" data-suffix="+">0+</div>
-                            <div class="stat-label">Events</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="5" data-suffix="★">0★</div>
-                            <div class="stat-label">Rating</div>
+                        <div class="about-block">
+                            <h3>Content</h3>
+                            <p>From music to YouTube videos, Rang creates content for everyone to enjoy. Check out more in the Content section.</p>
                         </div>
                     </div>
                 </div>
@@ -2981,6 +3355,38 @@ h1, h2, h3, h4, h5, h6 {
     <section id="content" class="section content">
         <div class="container">
             <h2 class="section-title">Music & Content</h2>
+
+            <!-- Latest Single -->
+            <div class="content-subsection">
+                <div class="latest-single-grid">
+                    <div class="latest-single-art">
+                        <img src="https://distrokid.imgix.net/http%3A%2F%2Fgather.fandalism.com%2F2306756--C6B208BF-E109-4999-9F8571ACCE7BEF82--0--1061448--pinkbandscoverart.png?fm=jpg&q=75&w=800&s=60440ee9ae05df3f806b33be3143885e" alt="Pink Bands cover art">
+                    </div>
+                    <div class="latest-single-info">
+                        <h4 class="latest-single-title">Pink Bands</h4>
+                        <p class="latest-single-subtitle">Latest Single - Out Now</p>
+                        <div class="latest-single-links">
+                            <a href="https://open.spotify.com/album/3Hheo7SObsQW9X0d7t0WIi?referral=labelaffiliate&utm_source=1011lC7BrQBi&utm_medium=Indie_Distrokid&utm_campaign=labelaffiliate" target="_blank" rel="noopener noreferrer" class="provider-link">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png" alt="Spotify">
+                                Spotify
+                            </a>
+                            <a href="https://music.apple.com/us/album/pink-bands-single/1849258980?uo=4&app=itunes&at=1001lry3&ct=dashboard" target="_blank" rel="noopener noreferrer" class="provider-link">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Apple_Music_icon.svg/2048px-Apple_Music_icon.svg.png" alt="Apple Music">
+                                Apple Music
+                            </a>
+                            <a href="https://music.youtube.com/watch?v=g3TRXt-eYKE&si=uUVGL1nN4n7edoeU" target="_blank" rel="noopener noreferrer" class="provider-link">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Youtube_Music_icon.svg/2048px-Youtube_Music_icon.svg.png" alt="YouTube Music">
+                                YouTube Music
+                            </a>
+                        </div>
+                        <div class="latest-single-video">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/zxJlntyZVAc?si=kGYUud_sKa2lHanS" title="YouTube video player" 
+                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
             <!-- Music Section -->
             <div class="content-subsection">
@@ -2989,128 +3395,71 @@ h1, h2, h3, h4, h5, h6 {
                     <span>Music</span>
                 </h3>
                 <div class="section-grid">
-                    <!-- Spotify Embed -->
                     <div class="embed-card">
                         <div class="embed-card-header">
                             <div class="embed-card-header-left">
                                 <div class="embed-card-icon">
-                                    <i class="fab fa-spotify"></i>
+                                    <i class="fas fa-headphones"></i>
                                 </div>
-                                <h4 class="embed-card-title">Spotify</h4>
+                                <h4 class="embed-card-title">All Platforms</h4>
                             </div>
-                            <a href="https://open.spotify.com/artist/1VmvoVXN0V2WLTDfEEssZu" target="_blank" rel="noopener noreferrer" class="embed-card-button">View Profile</a>
                         </div>
                         <div class="embed-card-body">
-                            <iframe 
-                                src="https://open.spotify.com/embed/artist/1VmvoVXN0V2WLTDfEEssZu?theme=0" 
-                                width="100%" 
-                                height="480" 
-                                frameborder="0" 
-                                allowtransparency="true" 
-                                allow="encrypted-media">
-                            </iframe>
-                        </div>
-                    </div>
-                    <!-- Apple Music Embed -->
-                    <div class="embed-card">
-                        <div class="embed-card-header">
-                            <div class="embed-card-header-left">
-                                <div class="embed-card-icon">
-                                    <i class="fab fa-apple"></i>
-                                </div>
-                                <h4 class="embed-card-title">Apple Music</h4>
+                            <div class="music-summary">
+                                <p>Rang brings culture into everything he creates. From creative music videos to catchy, memorable lyrics, his sound is designed to connect and leave an impact. Check it out below.</p>
+                                <a href="https://linktr.ee/rangmusic" target="_blank" rel="noopener noreferrer" class="linktree-btn">
+                                    <img src="https://cdn.brandfetch.io/id_tNIm05N/w/400/h/400/theme/dark/icon.png?c=1dxbfHSJFAPEGdCLU4o5B" alt="Linktree">
+                                    Linktree
+                                </a>
                             </div>
-                            <a href="https://music.apple.com/us/artist/rang/1527307197/see-all?section=top-songs" target="_blank" rel="noopener noreferrer" class="embed-card-button">View Top Songs</a>
-                        </div>
-                        <div class="embed-card-body">
-                            <iframe 
-                                allow="autoplay *; encrypted-media *;" 
-                                frameborder="0" 
-                                height="450" 
-                                style="width:100%;max-width:660px;overflow:hidden;background:transparent;" 
-                                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" 
-                                src="https://embed.music.apple.com/us/artist/rang/1527307197">
-                            </iframe>
                         </div>
                     </div>
                 </div>
             </div>
-
             <!-- Content Section -->
             <div class="content-subsection">
                 <h3 class="subsection-title">
                     <i class="fas fa-video"></i>
                     <span>Content</span>
                 </h3>
-                <div class="section-grid">
-                    <!-- TikTok Embed -->
-                    <div class="embed-card">
-                        <div class="embed-card-header">
-                            <div class="embed-card-header-left">
-                                <div class="embed-card-icon">
-                                    <i class="fab fa-tiktok"></i>
-                                </div>
-                                <h4 class="embed-card-title">TikTok</h4>
-                            </div>
-                            <a href="https://www.tiktok.com/@ranglovesyou" target="_blank" rel="noopener noreferrer" class="embed-card-button">View Profile</a>
+                <div class="content-highlights">
+                    <div class="content-highlight-card">
+                        <div class="content-highlight-title">Most Viewed on TikTok</div>
+                        <div class="content-highlight-value">25M+ Views</div>
+                        <div class="content-highlight-embed">
+                            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@ranglovesyou/video/7552630473793473847" data-video-id="7552630473793473847" style="max-width: 605px;min-width: 325px;" > 
+                                <section> 
+                                    <a target="_blank" title="@ranglovesyou" href="https://www.tiktok.com/@ranglovesyou?refer=embed">@ranglovesyou</a> 
+                                    Bro just wanted a snack but  hit the trend instead 😂@Pia Famous  
+                                    <a title="fyp" target="_blank" href="https://www.tiktok.com/tag/fyp?refer=embed">#fyp</a> 
+                                    <a title="brown" target="_blank" href="https://www.tiktok.com/tag/brown?refer=embed">#brown</a> 
+                                    <a title="funny" target="_blank" href="https://www.tiktok.com/tag/funny?refer=embed">#funny</a> 
+                                    <a title="indian" target="_blank" href="https://www.tiktok.com/tag/indian?refer=embed">#indian</a> 
+                                    <a title="sugaronmytounge" target="_blank" href="https://www.tiktok.com/tag/sugaronmytounge?refer=embed">#sugaronmytounge</a> 
+                                    <a target="_blank" title="♬ original sound - DJ RU" href="https://www.tiktok.com/music/original-sound-7541253269033601823?refer=embed">♬ original sound - DJ RU</a> 
+                                </section> 
+                            </blockquote> 
+                            <script async src="https://www.tiktok.com/embed.js"></script>
                         </div>
-                        <div class="embed-card-body">
-                            <iframe 
-                                src="https://www.tiktok.com/embed/@ranglovesyou" 
-                                width="100%" 
-                                height="650" 
-                                style="border:none;overflow:hidden;" 
+                    </div>
+                    <div class="content-highlight-card">
+                        <div class="content-highlight-title">Most Viewed on YouTube</div>
+                        <div class="content-highlight-value">30M+ Views</div>
+                        <div class="content-highlight-embed">
+                            <iframe
+                                src="https://www.youtube.com/embed/Tp09ELvtWJM"
+                                title="Rang YouTube short"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen>
                             </iframe>
                         </div>
                     </div>
-                    <!-- Instagram Embed -->
-                    <div class="embed-card">
-                        <div class="embed-card-header">
-                            <div class="embed-card-header-left">
-                                <div class="embed-card-icon">
-                                    <i class="fab fa-instagram"></i>
-                                </div>
-                                <h4 class="embed-card-title">Instagram</h4>
-                            </div>
-                            <a href="https://www.instagram.com/ranglovesyou/" target="_blank" rel="noopener noreferrer" class="embed-card-button">View Profile</a>
-                        </div>
-                        <div class="embed-card-body">
-                            <iframe 
-                                src="https://www.instagram.com/ranglovesyou/embed" 
-                                width="100%" 
-                                height="500" 
-                                style="border:none;overflow:hidden;" 
-                                allowfullscreen>
-                            </iframe>
-                        </div>
-                    </div>
-                    <!-- YouTube Embed -->
-                    <div class="embed-card">
-                        <div class="embed-card-header">
-                            <div class="embed-card-header-left">
-                                <div class="embed-card-icon">
-                                    <i class="fab fa-youtube"></i>
-                                </div>
-                                <h4 class="embed-card-title">YouTube</h4>
-                            </div>
-                            <a href="https://www.youtube.com/watch?v=zxJlntyZVAc" target="_blank" rel="noopener noreferrer" class="embed-card-button">Watch More</a>
-                        </div>
-                        <div class="embed-card-body youtube-videos">
-                            <div class="youtube-video-item">
-                                <p class="video-label">Music Video</p>
-                                <iframe 
-                                    width="100%" 
-                                    height="200" 
-                                    src="https://www.youtube.com/embed/zxJlntyZVAc?rel=0" 
-                                    title="YouTube video player" 
-                                    frameborder="0" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                    allowfullscreen>
-                                </iframe>
-                            </div>
-                            <div class="youtube-video-item">
-                                <p class="video-label">Latest Content</p>
+                </div>
+
+                <div class="content-carousel">
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="contentCarousel">
+                            <div class="carousel-slide">
                                 <iframe 
                                     width="100%" 
                                     height="200" 
@@ -3121,7 +3470,60 @@ h1, h2, h3, h4, h5, h6 {
                                     allowfullscreen>
                                 </iframe>
                             </div>
+                            <div class="carousel-slide">
+                                <iframe 
+                                    width="100%" 
+                                    height="200" 
+                                    src="https://www.youtube.com/embed/g4fFG-0rSFc?rel=0" 
+                                    title="YouTube video player" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="carousel-slide">
+                                <iframe 
+                                    width="100%" 
+                                    height="200" 
+                                    src="https://www.youtube.com/embed/dWEqTNLgxZ4?rel=0" 
+                                    title="YouTube video player" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
                         </div>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn carousel-prev" data-carousel="content" aria-label="Previous">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="carousel-dots" data-carousel="content">
+                            <span class="dot active" data-slide="0"></span>
+                            <span class="dot" data-slide="1"></span>
+                            <span class="dot" data-slide="2"></span>
+                        </div>
+                        <button class="carousel-btn carousel-next" data-carousel="content" aria-label="Next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="connect-with">
+                    <div class="connect-title">Connect With Rang</div>
+                    <div class="connect-links">
+                        <a href="https://www.instagram.com/ranglovesyou/" target="_blank" rel="noopener noreferrer" class="connect-link">
+                            <i class="fab fa-instagram"></i>
+                            Instagram
+                        </a>
+                        <a href="https://www.tiktok.com/@ranglovesyou" target="_blank" rel="noopener noreferrer" class="connect-link">
+                            <i class="fab fa-tiktok"></i>
+                            TikTok
+                        </a>
+                        <a href="https://www.youtube.com/@ranglovesyou" target="_blank" rel="noopener noreferrer" class="connect-link">
+                            <i class="fab fa-youtube"></i>
+                            YouTube
+                        </a>
                     </div>
                 </div>
             </div>
@@ -3130,150 +3532,58 @@ h1, h2, h3, h4, h5, h6 {
 
     <!-- Events Section -->
     <section id="events" class="section events">
-        <video class="events-bg-video" autoplay muted loop playsinline>
-            <source src="rangnightrecap.MOV" type="video/mp4">
+        <video class="events-bg-video" autoplay muted loop playsinline preload="auto">
+            <source src="rangnightrecap.MOV">
         </video>
         <div class="events-overlay"></div>
         <div class="container">
             <h2 class="section-title">Events</h2>
             
             <div class="events-layout">
-                <!-- Left Column: Events -->
+                <!-- Events -->
                 <div class="events-left">
                     <!-- Upcoming Events -->
                     <div class="upcoming-events-section">
                         <h3 class="events-subtitle">
                             <i class="fas fa-calendar-check"></i>
-                            <span>Upcoming Events</span>
+                            <span>Upcoming Shows</span>
                         </h3>
-                        <div class="upcoming-event-card">
-                            <div class="featured-event-embed">
-                                <div class="event-embed-header">
-                                    <div class="event-badge">Next Show</div>
-                                    <a href="https://tickets.lineleap.com/e/3cMTSbHxOZomwsl3h9OI" target="_blank" rel="noopener noreferrer" class="event-ticket-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                        Open in New Tab
-                                    </a>
+                        <div class="featured-event-embed">
+                            <div class="event-badge">No Events</div>
+                            <div class="event-details">
+                                <div class="event-detail-item">
+                                    <i class="fas fa-info-circle"></i>
+                                    <div>
+                                        <span class="detail-label">Update</span>
+                                        <span class="detail-value">No events as of now.</span>
+                                    </div>
                                 </div>
-                                <div class="event-embed-container">
-                                    <iframe 
-                                        src="https://tickets.lineleap.com/e/3cMTSbHxOZomwsl3h9OI" 
-                                        class="event-embed-iframe"
-                                        frameborder="0"
-                                        allowfullscreen
-                                        loading="lazy">
-                                    </iframe>
+                                <div class="event-detail-item">
+                                    <i class="fas fa-envelope-open-text"></i>
+                                    <div>
+                                        <span class="detail-label">Booking</span>
+                                        <span class="detail-value">Interested in hosting an event with Rang? Fill out the Booking section below.</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Past Events -->
-                    <div class="past-events-section">
+                    <div class="upcoming-events-section">
                         <h3 class="events-subtitle">
-                            <i class="fas fa-history"></i>
-                            <span>Past Events</span>
+                            <i class="fas fa-bullhorn"></i>
+                            <span>Tour Recap</span>
                         </h3>
-                        <div class="past-events-grid">
-                            <div class="past-event-card">
-                                <div class="past-event-date">
-                                    <span class="past-event-month">MAR</span>
-                                    <span class="past-event-day">15</span>
-                                </div>
-                                <div class="past-event-info">
-                                    <h4>University of Michigan</h4>
-                                    <p>Ann Arbor, MI</p>
-                                    <a href="#" class="past-event-link">View Details →</a>
-                                </div>
+                        <div class="events-media-grid">
+                            <div class="events-media-card">
+                                <img src="Rang%20Tour%20Graphic.png" alt="Rang tour graphic">
                             </div>
-                            <div class="past-event-card">
-                                <div class="past-event-date">
-                                    <span class="past-event-month">FEB</span>
-                                    <span class="past-event-day">20</span>
-                                </div>
-                                <div class="past-event-info">
-                                    <h4>Campus Show</h4>
-                                    <p>Michigan State</p>
-                                    <a href="#" class="past-event-link">View Details →</a>
-                                </div>
-                            </div>
-                            <div class="past-event-card">
-                                <div class="past-event-date">
-                                    <span class="past-event-month">JAN</span>
-                                    <span class="past-event-day">10</span>
-                                </div>
-                                <div class="past-event-info">
-                                    <h4>Winter Concert</h4>
-                                    <p>Detroit, MI</p>
-                                    <a href="#" class="past-event-link">View Details →</a>
-                                </div>
+                            <div class="events-media-card">
+                                <video src="Tore%20Up.mp4" autoplay muted loop playsinline preload="metadata"></video>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Right Column: Reviews -->
-                <div class="events-right">
-                    <div class="reviews-section">
-                        <h3 class="reviews-title">What People Say</h3>
-                        <div class="reviews-list">
-                            <div class="review-card">
-                                <div class="stars">★★★★★</div>
-                                <p class="review-text">"Rang killed it at U of M! Best show we've had this semester."</p>
-                                <p class="review-author">— Sarah M., University of Michigan</p>
-                            </div>
-                            <div class="review-card">
-                                <div class="stars">★★★★★</div>
-                                <p class="review-text">"Incredible energy and stage presence. Already planning to book again!"</p>
-                                <p class="review-author">— Michael T., Event Coordinator</p>
-                            </div>
-                            <div class="review-card">
-                                <div class="stars">★★★★★</div>
-                                <p class="review-text">"The students loved it. Rang knows how to connect with the crowd."</p>
-                                <p class="review-author">— Jessica L., Student Union</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Events Photo Carousel -->
-                    <div class="events-carousel-section">
-                        <h3 class="events-subtitle">
-                            <i class="fas fa-images"></i>
-                            <span>Event Photos</span>
-                        </h3>
-                        <div class="events-carousel">
-                            <div class="carousel-container">
-                                <div class="carousel-track" id="eventsCarousel">
-                                    <div class="carousel-slide">
-                                        <img src="aboutpics/rangabt_2.jpg" alt="Event Photo 1">
-                                    </div>
-                                    <div class="carousel-slide">
-                                        <img src="aboutpics/rangabt_3.png" alt="Event Photo 2">
-                                    </div>
-                                    <div class="carousel-slide">
-                                        <img src="aboutpics/_CSV3993.jpg" alt="Event Photo 3">
-                                    </div>
-                                    <div class="carousel-slide">
-                                        <img src="aboutpics/Rang Profile Pic.jpg" alt="Event Photo 4">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-controls">
-                                <button class="carousel-btn carousel-prev" aria-label="Previous">
-                                    <i class="fas fa-chevron-left"></i>
-                                </button>
-                                <div class="carousel-dots">
-                                    <span class="dot active" data-slide="0"></span>
-                                    <span class="dot" data-slide="1"></span>
-                                    <span class="dot" data-slide="2"></span>
-                                    <span class="dot" data-slide="3"></span>
-                                </div>
-                                <button class="carousel-btn carousel-next" aria-label="Next">
-                                    <i class="fas fa-chevron-right"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -3286,8 +3596,8 @@ h1, h2, h3, h4, h5, h6 {
             <div class="contact-content">
                 <div class="contact-form-wrapper">
                     <div class="booking-intro">
-                        <h3>Interested in Booking Rang for Your Next Event?</h3>
-                        <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+                        <h3>Booking and Inquiries</h3>
+                        <p>Interested in booking Rang for your next event? Sponsorship inquiries? Just want to say hi? Fill out the form and we will get back to you as soon as possible.</p>
                     </div>
                     <form id="contactForm" class="contact-form" action="https://formsubmit.co/a92a40bf124fca944a88355c5746e77b" method="POST">
                         <input type="hidden" name="_captcha" value="false">
@@ -3329,7 +3639,7 @@ h1, h2, h3, h4, h5, h6 {
                             <i class="fas fa-envelope"></i>
                             <h3>Business Email</h3>
                         </div>
-                        <a href="mailto:teamrang@rabbit.contact" class="contact-email-link">teamrang@rabbit.contact</a>
+                        <a href="mailto:rangmusicbiz@gmail.com" class="contact-email-link">rangmusicbiz@gmail.com</a>
                     </div>
                     <div class="contact-item contact-handle">
                         <div class="contact-item-header">
@@ -3393,56 +3703,68 @@ h1, h2, h3, h4, h5, h6 {
     <script>
         // Events Carousel Functionality
         (function() {
-            const carousel = document.getElementById('eventsCarousel');
-            const prevBtn = document.querySelector('.carousel-prev');
-            const nextBtn = document.querySelector('.carousel-next');
-            const dots = document.querySelectorAll('.dot');
-            let currentSlide = 0;
-            const totalSlides = dots.length;
+            function initCarousel(config) {
+                const track = document.getElementById(config.trackId);
+                if (!track) return;
 
-            function updateCarousel() {
-                carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
-                
-                // Update dots
+                const carouselRoot = track.closest(config.rootSelector);
+                if (!carouselRoot) return;
+
+                const prevBtn = carouselRoot.querySelector('.carousel-prev');
+                const nextBtn = carouselRoot.querySelector('.carousel-next');
+                const dots = carouselRoot.querySelectorAll('.dot');
+                if (!prevBtn || !nextBtn || dots.length === 0) return;
+
+                let currentSlide = 0;
+                const totalSlides = dots.length;
+
+                function updateCarousel() {
+                    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+                    dots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === currentSlide);
+                    });
+                }
+
+                function nextSlide() {
+                    currentSlide = (currentSlide + 1) % totalSlides;
+                    updateCarousel();
+                }
+
+                function prevSlide() {
+                    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                    updateCarousel();
+                }
+
+                function goToSlide(index) {
+                    currentSlide = index;
+                    updateCarousel();
+                }
+
+                nextBtn.addEventListener('click', nextSlide);
+                prevBtn.addEventListener('click', prevSlide);
+
                 dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentSlide);
+                    dot.addEventListener('click', () => goToSlide(index));
                 });
+
+                if (config.autoPlayMs) {
+                    let autoPlayInterval = setInterval(nextSlide, config.autoPlayMs);
+
+                    carouselRoot.addEventListener('mouseenter', () => {
+                        clearInterval(autoPlayInterval);
+                    });
+
+                    carouselRoot.addEventListener('mouseleave', () => {
+                        autoPlayInterval = setInterval(nextSlide, config.autoPlayMs);
+                    });
+                }
             }
 
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                updateCarousel();
-            }
-
-            function prevSlide() {
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                updateCarousel();
-            }
-
-            function goToSlide(index) {
-                currentSlide = index;
-                updateCarousel();
-            }
-
-            // Event listeners
-            nextBtn.addEventListener('click', nextSlide);
-            prevBtn.addEventListener('click', prevSlide);
-
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => goToSlide(index));
-            });
-
-            // Auto-play carousel
-            let autoPlayInterval = setInterval(nextSlide, 4000);
-
-            // Pause on hover
-            const carouselContainer = document.querySelector('.events-carousel');
-            carouselContainer.addEventListener('mouseenter', () => {
-                clearInterval(autoPlayInterval);
-            });
-
-            carouselContainer.addEventListener('mouseleave', () => {
-                autoPlayInterval = setInterval(nextSlide, 4000);
+            initCarousel({
+                trackId: 'contentCarousel',
+                rootSelector: '.content-carousel',
+                autoPlayMs: 5000
             });
         })();
     </script>
