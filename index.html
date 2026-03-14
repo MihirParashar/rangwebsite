@@ -5,6 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RANG - Rapper, Streamer & YouTuber</title>
     <style>
+    /* Custom Social Button Styles for 'More' Section */
+    .connect-link.youtube {
+        background: #FF0000;
+        color: #fff;
+        border: none;
+    }
+    .connect-link.youtube:hover {
+        background: #cc0000;
+        color: #fff;
+    }
+    .connect-link.instagram {
+        background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        color: #fff;
+        border: none;
+    }
+    .connect-link.instagram:hover {
+        filter: brightness(0.95);
+        color: #fff;
+    }
+    .connect-link.spotify {
+        background: #1DB954;
+        color: #fff;
+        border: none;
+    }
+    .connect-link.spotify:hover {
+        background: #169c43;
+        color: #fff;
+    }
+    .connect-link.tiktok {
+        background: #000000;
+        color: #fff;
+        border: none;
+    }
+    .connect-link.tiktok:hover {
+        background: #6c3fd6;
+        color: #fff;
+    }
 /* Reset & Base Styles */
 * {
     margin: 0;
@@ -54,176 +91,6 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0 24px;
 }
 
-/* Initial Logo (Center Screen) */
-.initial-logo {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2000;
-    opacity: 1;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    pointer-events: none;
-}
-
-.initial-logo.hidden {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.22) translateY(-200px);
-    pointer-events: none;
-    transition: all 1.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.initial-logo.transitioning {
-    transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translate(-50%, -50%) scale(0.22) translateY(-200px);
-    opacity: 0;
-}
-
-.logo-center {
-    height: 180px;
-    width: auto;
-    object-fit: contain;
-    filter: none;
-    display: block;
-    margin: 0 auto;
-    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-    animation: logoDraw 2.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-    position: relative;
-}
-
-.initial-logo::before {
-    content: '✏️';
-    position: absolute;
-    font-size: 32px;
-    top: 50%;
-    left: 0;
-    transform: translate(-50%, -50%) rotate(-30deg);
-    z-index: 2001;
-    animation: pencilScribble 2.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
-}
-
-@keyframes pencilScribble {
-    0% {
-        left: -5%;
-        top: 50%;
-        opacity: 0;
-        transform: translate(-50%, -50%) rotate(-25deg) scale(1);
-    }
-    2% {
-        opacity: 1;
-    }
-    8% {
-        left: 8%;
-        top: 47%;
-        transform: translate(-50%, -50%) rotate(-32deg) scale(1.1);
-    }
-    16% {
-        left: 18%;
-        top: 53%;
-        transform: translate(-50%, -50%) rotate(-28deg) scale(0.95);
-    }
-    24% {
-        left: 28%;
-        top: 48%;
-        transform: translate(-50%, -50%) rotate(-35deg) scale(1.05);
-    }
-    32% {
-        left: 38%;
-        top: 52%;
-        transform: translate(-50%, -50%) rotate(-27deg) scale(1);
-    }
-    40% {
-        left: 48%;
-        top: 49%;
-        transform: translate(-50%, -50%) rotate(-33deg) scale(1.08);
-    }
-    48% {
-        left: 58%;
-        top: 51%;
-        transform: translate(-50%, -50%) rotate(-29deg) scale(0.98);
-    }
-    56% {
-        left: 68%;
-        top: 48%;
-        transform: translate(-50%, -50%) rotate(-34deg) scale(1.03);
-    }
-    64% {
-        left: 78%;
-        top: 52%;
-        transform: translate(-50%, -50%) rotate(-28deg) scale(1.06);
-    }
-    72% {
-        left: 88%;
-        top: 49%;
-        transform: translate(-50%, -50%) rotate(-31deg) scale(1);
-    }
-    80% {
-        left: 98%;
-        top: 51%;
-        transform: translate(-50%, -50%) rotate(-26deg) scale(1.1);
-    }
-    88% {
-        opacity: 1;
-    }
-    100% {
-        left: 108%;
-        top: 50%;
-        opacity: 0;
-        transform: translate(-50%, -50%) rotate(-30deg) scale(0.8);
-    }
-}
-
-@keyframes logoDraw {
-    0% {
-        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-        opacity: 0.2;
-        filter: none;
-    }
-    30% {
-        clip-path: polygon(0 0, 30% 0, 30% 100%, 0 100%);
-        opacity: 0.5;
-        filter: none;
-    }
-    60% {
-        clip-path: polygon(0 0, 70% 0, 70% 100%, 0 100%);
-        opacity: 0.8;
-        filter: none;
-    }
-    100% {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        opacity: 1;
-        filter: none;
-    }
-}
-
-.logo-handle {
-    font-size: 18px;
-    color: var(--text-light);
-    text-align: center;
-    margin-top: 16px;
-    letter-spacing: 2px;
-    font-weight: 600;
-    text-shadow: 
-        0 2px 10px rgba(0, 0, 0, 0.9),
-        0 0 20px rgba(255, 203, 5, 0.4);
-    font-family: 'Outfit', sans-serif;
-    opacity: 0;
-    transform: translateY(10px);
-    animation: handleFadeIn 0.8s ease-out 2s forwards;
-}
-
-@keyframes handleFadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1.02);
-    }
-}
-
-
 /* Header & Navigation */
 .header {
     position: fixed;
@@ -234,8 +101,8 @@ h1, h2, h3, h4, h5, h6 {
     background: rgba(10, 14, 26, 0.5);
     backdrop-filter: blur(30px) saturate(180%);
     border-bottom: 1px solid rgba(255, 203, 5, 0.1);
-    opacity: 0;
-    transform: translateY(-100%);
+    opacity: 1;
+    transform: translateY(0);
     transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     will-change: transform, opacity;
@@ -390,15 +257,6 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 100vh;
     padding: 80px 0 80px;
     position: relative;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: opacity, transform;
-}
-
-.section.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 /* Hero section is always visible for video */
@@ -547,8 +405,8 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     justify-content: flex-start;
     min-height: 100vh;
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 1;
+    transform: translateY(0);
     transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s;
     will-change: opacity, transform;
 }
@@ -893,7 +751,7 @@ h1, h2, h3, h4, h5, h6 {
 .about-photos {
     display: grid !important;
     grid-template-columns: 1.12fr 0.88fr !important;
-    grid-template-rows: auto auto 1fr !important; /* Added explicit rows with 1fr for last row */
+    grid-template-rows: auto auto 1fr !important;
     grid-template-areas:
         "hero top"
         "hero mid"
@@ -902,7 +760,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     max-width: none !important;
     align-items: stretch;
-    height: 100%; /* Make grid fill available height */
+    height: 100%;
 }
 
 .photo-container {
@@ -1221,7 +1079,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .content-highlight-embed {
-    margin-top: 14px;
+    /* margin-top: 14px; */
     border-radius: 12px;
     overflow: hidden;
     background: rgba(0, 0, 0, 0.35);
@@ -1230,7 +1088,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .content-highlight-embed iframe {
     width: 100%;
-    height: 770px;
+    height: 600px;
     border: none;
     display: block;
 }
@@ -1246,7 +1104,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .content-carousel .carousel-container {
-    height: 600px;
+    height: 500px;
 }
 
 .carousel-slide iframe {
@@ -2185,14 +2043,14 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--bg-darker);
 }
 
-.contact-content {
+/* .contact-content {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
     gap: 48px;
     max-width: 1200px;
     margin: 0 auto;
     align-items: start;
-}
+} */
 
 .contact-form-wrapper {
     background: var(--bg-light);
@@ -2451,7 +2309,6 @@ h1, h2, h3, h4, h5, h6 {
         padding: 0 16px;
     }
 
-    /* Center the overall section layout on mobile (keep inner cards/forms readable) */
     .section .container {
         display: flex;
         flex-direction: column;
@@ -2521,15 +2378,6 @@ h1, h2, h3, h4, h5, h6 {
         min-height: auto;
     }
 
-    .logo-center {
-        height: 120px;
-    }
-
-    .logo-handle {
-        font-size: 12px;
-        margin-top: 10px;
-    }
-
     .hero-logo {
         height: 80px;
     }
@@ -2565,7 +2413,6 @@ h1, h2, h3, h4, h5, h6 {
         margin-bottom: 32px;
     }
 
-    /* Headings/subtitles should feel centered on mobile */
     .events-subtitle,
     .reviews-title {
         justify-content: center;
@@ -2580,7 +2427,6 @@ h1, h2, h3, h4, h5, h6 {
         align-self: center;
     }
 
-    /* Keep content blocks readable even though the layout is centered */
     .embed-card,
     .featured-event-embed,
     .events-carousel,
@@ -2691,7 +2537,6 @@ h1, h2, h3, h4, h5, h6 {
     .events-media-grid {
         grid-template-columns: 1fr;
     }
-
 
     .featured-event-embed {
         padding: 14px;
@@ -2852,7 +2697,6 @@ h1, h2, h3, h4, h5, h6 {
         z-index: 3;
         text-align: center;
         padding: 0 16px;
-        /* Center the hero stack vertically on mobile (avoid "everything too high") */
         padding-top: 64px;
         padding-bottom: 56px;
         width: 100%;
@@ -2864,8 +2708,8 @@ h1, h2, h3, h4, h5, h6 {
         justify-content: center;
         min-height: 100svh;
         gap: 14px;
-        opacity: 0;
-        transform: translateY(30px);
+        opacity: 1;
+        transform: translateY(0);
         transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s;
     }
 
@@ -2936,7 +2780,6 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .about-content {
-        /* Stack About on mobile with PHOTOS FIRST, then text */
         display: flex !important;
         flex-direction: column;
         gap: 24px;
@@ -3247,13 +3090,9 @@ h1, h2, h3, h4, h5, h6 {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Initial Logo (Center of Screen) -->
-    <div class="initial-logo" id="initialLogo">
-        <img src="rang2.png" alt="RANG" class="logo-center">
-    </div>
 
     <!-- Header -->
-    <header class="header" id="mainHeader">
+    <header class="header visible" id="mainHeader">
         <nav class="nav">
             <a href="#home" class="logo-link">
                 <img src="ranglogo.PNG" alt="RANG" class="logo">
@@ -3283,7 +3122,7 @@ h1, h2, h3, h4, h5, h6 {
         <button class="volume-toggle" id="volumeToggle" aria-label="Toggle sound">
             <i class="fas fa-volume-mute" id="volumeIcon"></i>
         </button>
-        <div class="hero-content" id="heroContent">
+        <div class="hero-content visible" id="heroContent">
             <div class="hero-logo-container">
                 <img src="rangw@2.png" alt="RANG" class="hero-logo">
             </div>
@@ -3301,16 +3140,6 @@ h1, h2, h3, h4, h5, h6 {
             </div>
         </div>
     </section>
-     <!-- Notes: 
-        - Intro sketching too much? 
-        - Changed background video
-        - Added latest single section
-        - Linktree could be better
-        - Content tiktok/youtube too big
-        - Added slideshow
-        - Connect with rang is redundant? 
-        - Events section video background doesn't look good?
-    -->
     <!-- About Section -->
     <section id="about" class="section about">
         <div class="container">
@@ -3401,19 +3230,22 @@ h1, h2, h3, h4, h5, h6 {
                         <div class="content-highlight-title">Most Viewed on TikTok</div>
                         <div class="content-highlight-value">25M+ Views</div>
                         <div class="content-highlight-embed">
-                            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@ranglovesyou/video/7552630473793473847" data-video-id="7552630473793473847" style="max-width: 605px;min-width: 325px;" > 
-                                <section> 
-                                    <a target="_blank" title="@ranglovesyou" href="https://www.tiktok.com/@ranglovesyou?refer=embed">@ranglovesyou</a> 
-                                    Bro just wanted a snack but  hit the trend instead 😂@Pia Famous  
-                                    <a title="fyp" target="_blank" href="https://www.tiktok.com/tag/fyp?refer=embed">#fyp</a> 
-                                    <a title="brown" target="_blank" href="https://www.tiktok.com/tag/brown?refer=embed">#brown</a> 
-                                    <a title="funny" target="_blank" href="https://www.tiktok.com/tag/funny?refer=embed">#funny</a> 
-                                    <a title="indian" target="_blank" href="https://www.tiktok.com/tag/indian?refer=embed">#indian</a> 
-                                    <a title="sugaronmytounge" target="_blank" href="https://www.tiktok.com/tag/sugaronmytounge?refer=embed">#sugaronmytounge</a> 
-                                    <a target="_blank" title="♬ original sound - DJ RU" href="https://www.tiktok.com/music/original-sound-7541253269033601823?refer=embed">♬ original sound - DJ RU</a> 
-                                </section> 
-                            </blockquote> 
-                            <script async src="https://www.tiktok.com/embed.js"></script>
+                            <script>
+                                  (function() {
+                                    const container = document.createElement("div");
+                                    container.innerHTML = `
+                                    <iframe 
+                                        src="https://www.tiktok.com/embed/v2/7552630473793473847" 
+                                        height="600" 
+                                        width="325" 
+                                        style="border: none;" 
+                                        allowfullscreen>
+                                    </iframe>
+                                    `;
+
+                                    document.currentScript.parentNode.insertBefore(container, document.currentScript.nextSibling);
+                                })();
+                                </script>
                         </div>
                     </div>
                     <div class="content-highlight-card">
@@ -3488,15 +3320,45 @@ h1, h2, h3, h4, h5, h6 {
                         <span>More</span>
                     </h3>
                     <div class="connect-links">
-                        <a href="https://www.instagram.com/ranglovesyou/" target="_blank" rel="noopener noreferrer" class="connect-link">
+                        <a href="https://www.instagram.com/ranglovesyou/" target="_blank" rel="noopener noreferrer" class="connect-link instagram">
                             <i class="fab fa-instagram"></i>
                             Instagram
                         </a>
-                        <a href="https://www.tiktok.com/@ranglovesyou" target="_blank" rel="noopener noreferrer" class="connect-link">
-                            <i class="fab fa-tiktok"></i>
-                            TikTok
+                        <a href="https://www.tiktok.com/@ranglovesyou" target="_blank" rel="noopener noreferrer" class="connect-link tiktok">
+                            <span style="display:flex; align-items:center; gap:8px;">
+<svg width="22" height="22" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+
+<!-- Cyan shadow (moved higher) -->
+<path fill="#25F4EE"
+d="M45 6c1.6 6.6 6.7 11.6 13.3 12.7v7.2c-4.4-.1-8.6-1.3-12.3-3.4v18.3
+c0 9.6-7.8 17.4-17.4 17.4S11.2 50.4 11.2 40.8
+S19 23.4 28.6 23.4c1 0 2 .1 3 .3v7.3c-1-.3-2-.5-3-.5
+c-5.4 0-9.8 4.4-9.8 9.8s4.4 9.8 9.8 9.8
+s9.8-4.4 9.8-9.8V6h6.6z"
+transform="translate(-2,-4)"/>
+
+<!-- Red shadow (moved lower) -->
+<path fill="#FE2C55"
+d="M45 6c1.6 6.6 6.7 11.6 13.3 12.7v7.2c-4.4-.1-8.6-1.3-12.3-3.4v18.3
+c0 9.6-7.8 17.4-17.4 17.4S11.2 50.4 11.2 40.8
+S19 23.4 28.6 23.4c1 0 2 .1 3 .3v7.3c-1-.3-2-.5-3-.5
+c-5.4 0-9.8 4.4-9.8 9.8s4.4 9.8 9.8 9.8
+s9.8-4.4 9.8-9.8V6h6.6z"
+transform="translate(2,4)"/>
+
+<!-- Main note -->
+<path fill="white"
+d="M45 6c1.6 6.6 6.7 11.6 13.3 12.7v7.2c-4.4-.1-8.6-1.3-12.3-3.4v18.3
+c0 9.6-7.8 17.4-17.4 17.4S11.2 50.4 11.2 40.8
+S19 23.4 28.6 23.4c1 0 2 .1 3 .3v7.3c-1-.3-2-.5-3-.5
+c-5.4 0-9.8 4.4-9.8 9.8s4.4 9.8 9.8 9.8
+s9.8-4.4 9.8-9.8V6h6.6z"/>
+
+</svg>
+TikTok
+</span>
                         </a>
-                        <a href="https://www.youtube.com/@ranglovesyou" target="_blank" rel="noopener noreferrer" class="connect-link">
+                        <a href="https://www.youtube.com/@ranglovesyou" target="_blank" rel="noopener noreferrer" class="connect-link youtube">
                             <i class="fab fa-youtube"></i>
                             YouTube
                         </a>
@@ -3569,6 +3431,14 @@ h1, h2, h3, h4, h5, h6 {
         <div class="container">
             <h2 class="section-title">Contact & Bookings</h2>
             <div class="contact-content">
+                <div class="contact-item contact-email">
+                    <div class="contact-item-header">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Business Email</h3>
+                    </div>
+                    <a href="mailto:rangmusicbiz@gmail.com" class="contact-email-link">rangmusicbiz@gmail.com</a>
+                </div> 
+                <br /> 
                 <div class="contact-form-wrapper">
                     <div class="booking-intro">
                         <h3>Booking and Inquiries</h3>
@@ -3608,7 +3478,7 @@ h1, h2, h3, h4, h5, h6 {
                         <button type="submit" class="btn btn-primary">Send Message</button>
                     </form>
                 </div>
-                <div class="contact-info">
+                <!-- <div class="contact-info">
                     <div class="contact-item contact-email">
                         <div class="contact-item-header">
                             <i class="fas fa-envelope"></i>
@@ -3651,7 +3521,7 @@ h1, h2, h3, h4, h5, h6 {
                             </a>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
