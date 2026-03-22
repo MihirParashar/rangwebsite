@@ -11,36 +11,16 @@
         color: #fff;
         border: none;
     }
-    .connect-link.youtube:hover {
-        background: #cc0000;
-        color: #fff;
-    }
     .connect-link.instagram {
         background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
         color: #fff;
         border: none;
     }
-    .connect-link.instagram:hover {
-        filter: brightness(0.95);
-        color: #fff;
-    }
-    .connect-link.spotify {
-        background: #1DB954;
-        color: #fff;
-        border: none;
-    }
-    .connect-link.spotify:hover {
-        background: #169c43;
-        color: #fff;
-    }
+    
     .connect-link.tiktok {
         background: #000000;
         color: #fff;
         border: none;
-    }
-    .connect-link.tiktok:hover {
-        background: #6c3fd6;
-        color: #fff;
     }
 /* Reset & Base Styles */
 * {
@@ -1027,6 +1007,10 @@ h1, h2, h3, h4, h5, h6 {
     width: fit-content;
     text-decoration: none;
     align-self: flex-start;
+    transition: all 0.3s ease;
+}
+.linktree-btn:hover {
+    transform: translateY(-2px);
 }
 .linktree-btn img {
     width: 18px;
@@ -1152,9 +1136,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .connect-link:hover {
-    background: rgba(255, 203, 5, 0.18);
-    border-color: var(--primary);
-    color: var(--primary);
     transform: translateY(-2px);
 }
 
