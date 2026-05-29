@@ -1,0 +1,73 @@
+# Decap CMS configuration
+# Docs: https://decapcms.org/docs/
+
+backend:
+  name: github
+  repo: MihirParashar/rangwebsite
+  branch: main
+  # base_url points at your GitHub OAuth proxy. Required for the live
+  # login on GitHub Pages (GitHub Pages can't run server-side auth itself).
+  # Example:
+  base_url: https://rang-cms-auth.ranglovesyou.workers.dev
+
+# Local testing only: with this enabled, run `npx decap-server` and open
+# the site over http://localhost — the CMS edits your local files and
+# needs no GitHub login. Comment this out (or it is ignored) in production.
+local_backend: true
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: stats
+    label: "Stats / Follower Numbers"
+    files:
+      - name: stats
+        label: "Stats"
+        file: "content/stats.json"
+        format: json
+        fields:
+          - { name: followers, label: "Follower count (e.g. 200k+)", widget: string }
+          - { name: tiktokViews, label: "Most viewed on TikTok", widget: string }
+          - { name: youtubeViews, label: "Most viewed on YouTube", widget: string }
+
+  - name: latest-single
+    label: "Latest Single"
+    files:
+      - name: latest-single
+        label: "Latest Single"
+        file: "content/latest-single.json"
+        format: json
+        fields:
+          - { name: title, label: "Title", widget: string }
+          - { name: subtitle, label: "Subtitle", widget: string }
+          - { name: coverArt, label: "Cover art URL", widget: string }
+          - { name: youtubeEmbedId, label: "YouTube video ID", widget: string, hint: "The part after watch?v=  (e.g. zxJlntyZVAc)" }
+          - name: links
+            label: "Streaming links"
+            widget: list
+            fields:
+              - { name: platform, label: "Platform name", widget: string }
+              - { name: logo, label: "Logo image file", widget: string, required: false }
+              - { name: url, label: "Link URL", widget: string }
+
+  - name: events
+    label: "Events"
+    files:
+      - name: events
+        label: "Events"
+        file: "content/events.json"
+        format: json
+        fields:
+          - { name: emptyMessage, label: "Message shown when there are no events", widget: string }
+          - { name: bookingNote, label: "Booking note", widget: string }
+          - name: upcoming
+            label: "Upcoming shows"
+            widget: list
+            required: false
+            summary: "{{fields.date}} — {{fields.title}}"
+            fields:
+              - { name: title, label: "Event name", widget: string }
+              - { name: date, label: "Date (e.g. Aug 14, 2026)", widget: string }
+              - { name: venue, label: "Venue / City", widget: string, required: false }
+              - { name: ticketUrl, label: "Ticket link", widget: string, required: false }

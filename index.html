@@ -2713,7 +2713,7 @@ select.form-input option {
         text-align: center;
         padding: 0 16px;
         padding-top: 64px;
-        padding-bottom: 56px;
+        padding-bottom: 32px;
         width: 100%;
         max-width: 100%;
         margin: 0 auto;
@@ -2721,7 +2721,7 @@ select.form-input option {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        min-height: 100svh;
+        min-height: 82svh;
         gap: 14px;
         opacity: 1;
         transform: translateY(0);
@@ -2805,11 +2805,11 @@ select.form-input option {
     .about-left {
         gap: 24px;
         align-items: center;
-        order: 2;
+        order: 1;
     }
 
     .about-photos {
-        order: 1;
+        order: 2;
     }
 
     .lead {
@@ -3165,7 +3165,7 @@ select.form-input option {
                     <div class="about-text">
                         <div class="about-block">
                             <h3>Influence</h3>
-                            <p>200k+ followers and growing.</p>
+                            <p><span data-stat="followers">200k+</span> followers and growing.</p>
                             <p>Completed his first national tour, performing at colleges across the country.</p>
                         </div>
                         <div class="about-block">
@@ -3208,12 +3208,12 @@ select.form-input option {
             <div class="content-subsection">
                 <div class="latest-single-grid">
                     <div class="latest-single-art">
-                        <img src="https://distrokid.imgix.net/http%3A%2F%2Fgather.fandalism.com%2F2306756--C6B208BF-E109-4999-9F8571ACCE7BEF82--0--1061448--pinkbandscoverart.png?fm=jpg&q=75&w=800&s=60440ee9ae05df3f806b33be3143885e" alt="Pink Bands cover art">
+                        <img src="https://distrokid.imgix.net/http%3A%2F%2Fgather.fandalism.com%2F2306756--C6B208BF-E109-4999-9F8571ACCE7BEF82--0--1061448--pinkbandscoverart.png?fm=jpg&q=75&w=800&s=60440ee9ae05df3f806b33be3143885e" alt="Latest single cover art" data-single="art">
                     </div>
                     <div class="latest-single-info">
-                        <h4 class="latest-single-title">Pink Bands</h4>
-                        <p class="latest-single-subtitle">Latest Single - Out Now</p>
-                        <div class="latest-single-links">
+                        <h4 class="latest-single-title" data-single="title">Pink Bands</h4>
+                        <p class="latest-single-subtitle" data-single="subtitle">Latest Single - Out Now</p>
+                        <div class="latest-single-links" data-single="links">
                             <a href="https://open.spotify.com/album/3Hheo7SObsQW9X0d7t0WIi?referral=labelaffiliate&utm_source=1011lC7BrQBi&utm_medium=Indie_Distrokid&utm_campaign=labelaffiliate" target="_blank" rel="noopener noreferrer" class="provider-link">
                                 <img src="Spotify_logo_without_text.svg.png" alt="Spotify">
                                 Spotify
@@ -3227,9 +3227,9 @@ select.form-input option {
                                 YouTube Music
                             </a>
                         </div>
-                        <div class="latest-single-video">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/zxJlntyZVAc?si=kGYUud_sKa2lHanS" title="YouTube video player" 
-                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        <div class="latest-single-video" data-single="video">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/zxJlntyZVAc" title="YouTube video player"
+                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
                     </div>
@@ -3244,7 +3244,7 @@ select.form-input option {
                 <div class="content-highlights">
                     <div class="content-highlight-card">
                         <div class="content-highlight-title">Most Viewed on TikTok</div>
-                        <div class="content-highlight-value">25M+ Views</div>
+                        <div class="content-highlight-value" data-stat="tiktokViews">25M+ Views</div>
                         <div class="content-highlight-embed">
                             <script>
                                   (function() {
@@ -3266,7 +3266,8 @@ select.form-input option {
                     </div>
                     <div class="content-highlight-card">
                         <div class="content-highlight-title">Most Viewed on YouTube</div>
-                        <div class="content-highlight-value">30M+ Views</div>
+                        <div class="content-highlight-value" data-stat="youtubeViews">30M+ Views</div>
+                        <div class="content-highlight-note" data-yt-subscribers style="display:none;"></div>
                         <div class="content-highlight-embed">
                             <iframe
                                 src="https://www.youtube.com/embed/Tp09ELvtWJM"
@@ -3417,7 +3418,7 @@ TikTok
                             <i class="fas fa-calendar-check"></i>
                             <span>Upcoming Shows</span>
                         </h3>
-                        <div class="featured-event-embed">
+                        <div class="featured-event-embed" data-events-container>
                             <div class="event-badge">No Events</div>
                             <div class="event-details">
                                 <div class="event-detail-item">
@@ -3626,11 +3627,15 @@ TikTok
                 }
             }
 
-            initCarousel({
-                trackId: 'contentCarousel',
-                rootSelector: '.content-carousel',
-                autoPlayMs: 5000
-            });
+            window.initContentCarousel = function() {
+                initCarousel({
+                    trackId: 'contentCarousel',
+                    rootSelector: '.content-carousel',
+                    autoPlayMs: 5000
+                });
+            };
+
+            window.initContentCarousel();
         })();
     </script>
     <script>
@@ -3670,6 +3675,174 @@ TikTok
                     alert('Something went wrong. Please try again.');
                 });
             });
+        })();
+    </script>
+    <script>
+        /* ============================================================
+           CONFIG  — fill in your YouTube Data API key to enable the
+           live "latest videos" carousel + subscriber count.
+           Get a key at https://console.cloud.google.com (enable
+           "YouTube Data API v3"), then restrict it to your domain.
+           Leave it blank and the site falls back to the static videos.
+           ============================================================ */
+        const YOUTUBE_API_KEY = "AIzaSyCRNJvAjZgFnV5Yn6MdStizqGKkwn6HbYU";
+        const YOUTUBE_CHANNEL_ID = "UCjzG1q3dd5A0-zM6i1r6rRw";
+        const YOUTUBE_MAX_VIDEOS = 6;
+
+        /* ---------- Editable content loader (Decap CMS) ---------- */
+        (function loadSiteContent() {
+            const json = (path) => fetch(path, { cache: "no-store" })
+                .then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
+
+            // Stats / follower numbers
+            json("content/stats.json").then((stats) => {
+                document.querySelectorAll("[data-stat]").forEach((el) => {
+                    const key = el.getAttribute("data-stat");
+                    if (stats[key] != null) el.textContent = stats[key];
+                });
+            }).catch(() => {});
+
+            // Latest single
+            json("content/latest-single.json").then((s) => {
+                const set = (sel, fn) => {
+                    const el = document.querySelector(sel);
+                    if (el) fn(el);
+                };
+                if (s.art) set('[data-single="art"]', (el) => { el.src = s.art; });
+                if (s.title) set('[data-single="title"]', (el) => { el.textContent = s.title; });
+                if (s.subtitle) set('[data-single="subtitle"]', (el) => { el.textContent = s.subtitle; });
+                if (Array.isArray(s.links)) {
+                    set('[data-single="links"]', (el) => {
+                        el.innerHTML = s.links.map((l) => `
+                            <a href="${l.url}" target="_blank" rel="noopener noreferrer" class="provider-link">
+                                ${l.logo ? `<img src="${l.logo}" alt="${l.platform}">` : ""}
+                                ${l.platform}
+                            </a>`).join("");
+                    });
+                }
+                if (s.youtubeEmbedId) set('[data-single="video"]', (el) => {
+                    el.innerHTML = `<iframe width="560" height="315"
+                        src="https://www.youtube.com/embed/${s.youtubeEmbedId}"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+                });
+            }).catch(() => {});
+
+            // Events
+            json("content/events.json").then((data) => {
+                const container = document.querySelector("[data-events-container]");
+                if (!container) return;
+                const events = Array.isArray(data.upcoming) ? data.upcoming : [];
+                if (events.length === 0) {
+                    container.innerHTML = `
+                        <div class="event-badge">No Events</div>
+                        <div class="event-details">
+                            <div class="event-detail-item">
+                                <i class="fas fa-info-circle"></i>
+                                <div>
+                                    <span class="detail-label">Update</span>
+                                    <span class="detail-value">${data.emptyMessage || "No events as of now."}</span>
+                                </div>
+                            </div>
+                            <div class="event-detail-item">
+                                <i class="fas fa-envelope-open-text"></i>
+                                <div>
+                                    <span class="detail-label">Booking</span>
+                                    <span class="detail-value">${data.bookingNote || "Interested in hosting an event with Rang? Fill out the Booking section below."}</span>
+                                </div>
+                            </div>
+                        </div>`;
+                    return;
+                }
+                container.innerHTML = `
+                    <div class="event-badge">Upcoming</div>
+                    <div class="event-details">
+                        ${events.map((ev) => `
+                            <div class="event-detail-item">
+                                <i class="fas fa-calendar-day"></i>
+                                <div>
+                                    <span class="detail-label">${ev.date || ""}${ev.venue ? " &middot; " + ev.venue : ""}</span>
+                                    <span class="detail-value">${ev.title || ""}</span>
+                                    ${ev.ticketUrl ? `<a class="event-link" href="${ev.ticketUrl}" target="_blank" rel="noopener noreferrer">Get Tickets &rarr;</a>` : ""}
+                                </div>
+                            </div>`).join("")}
+                    </div>`;
+            }).catch(() => {});
+        })();
+
+        /* ---------- YouTube Data API: latest videos + subscribers ---------- */
+        (function loadYouTube() {
+            if (!YOUTUBE_API_KEY) return; // no key yet -> keep static fallback
+
+            const api = (endpoint, params) => {
+                const qs = new URLSearchParams(Object.assign({ key: YOUTUBE_API_KEY }, params));
+                return fetch(`https://www.googleapis.com/youtube/v3/${endpoint}?${qs}`)
+                    .then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
+            };
+
+            api("channels", { part: "contentDetails,statistics", id: YOUTUBE_CHANNEL_ID })
+                .then((data) => {
+                    const ch = data.items && data.items[0];
+                    if (!ch) return;
+
+                    // Subscriber count
+                    const subs = ch.statistics && ch.statistics.subscriberCount;
+                    const subEl = document.querySelector("[data-yt-subscribers]");
+                    if (subEl && subs) {
+                        subEl.textContent = Number(subs).toLocaleString() + " subscribers";
+                        subEl.style.display = "";
+                    }
+
+                    // Latest uploads -> rebuild carousel
+                    const uploads = ch.contentDetails &&
+                        ch.contentDetails.relatedPlaylists &&
+                        ch.contentDetails.relatedPlaylists.uploads;
+                    if (!uploads) return;
+                    return api("playlistItems", {
+                        part: "snippet",
+                        playlistId: uploads,
+                        maxResults: YOUTUBE_MAX_VIDEOS
+                    });
+                })
+                .then((data) => {
+                    if (!data || !data.items || !data.items.length) return;
+                    const ids = data.items
+                        .map((it) => it.snippet && it.snippet.resourceId && it.snippet.resourceId.videoId)
+                        .filter(Boolean);
+                    if (!ids.length) return;
+
+                    const root = document.querySelector(".content-carousel");
+                    if (!root) return;
+                    root.innerHTML = `
+                        <div class="carousel-container">
+                            <div class="carousel-track" id="contentCarousel">
+                                ${ids.map((id) => `
+                                    <div class="carousel-slide">
+                                        <iframe width="100%" height="200"
+                                            src="https://www.youtube.com/embed/${id}?rel=0"
+                                            title="YouTube video player" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
+                                    </div>`).join("")}
+                            </div>
+                        </div>
+                        <div class="carousel-controls">
+                            <button class="carousel-btn carousel-prev" data-carousel="content" aria-label="Previous">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div class="carousel-dots" data-carousel="content">
+                                ${ids.map((_, i) => `<span class="dot${i === 0 ? " active" : ""}" data-slide="${i}"></span>`).join("")}
+                            </div>
+                            <button class="carousel-btn carousel-next" data-carousel="content" aria-label="Next">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>`;
+                    if (typeof window.initContentCarousel === "function") {
+                        window.initContentCarousel();
+                    }
+                })
+                .catch((err) => console.warn("YouTube API unavailable:", err));
         })();
     </script>
     <script src="script.js"></script>

@@ -1,0 +1,23 @@
+{
+  "title": "Pink Bands",
+  "subtitle": "Latest Single - Out Now",
+  "coverArt": "https://distrokid.imgix.net/http%3A%2F%2Fgather.fandalism.com%2F2306756--C6B208BF-E109-4999-9F8571ACCE7BEF82--0--1061448--pinkbandscoverart.png?fm=jpg&q=75&w=800&s=60440ee9ae05df3f806b33be3143885e",
+  "youtubeEmbedId": "zxJlntyZVAc",
+  "links": [
+    {
+      "platform": "Spotify",
+      "logo": "Spotify_logo_without_text.svg.png",
+      "url": "https://open.spotify.com/album/3Hheo7SObsQW9X0d7t0WIi?referral=labelaffiliate&utm_source=1011lC7BrQBi&utm_medium=Indie_Distrokid&utm_campaign=labelaffiliate"
+    },
+    {
+      "platform": "Apple Music",
+      "logo": "Apple_Music_icon.svg.png",
+      "url": "https://music.apple.com/us/album/pink-bands-single/1849258980?uo=4&app=itunes&at=1001lry3&ct=dashboard"
+    },
+    {
+      "platform": "YouTube Music",
+      "logo": "Youtube_Music_icon.svg.png",
+      "url": "https://music.youtube.com/watch?v=g3TRXt-eYKE&si=uUVGL1nN4n7edoeU"
+    }
+  ]
+}
