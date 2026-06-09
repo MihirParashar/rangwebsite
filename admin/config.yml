@@ -8,7 +8,7 @@ backend:
   # base_url points at your GitHub OAuth proxy. Required for the live
   # login on GitHub Pages (GitHub Pages can't run server-side auth itself).
   # Example:
-  base_url: https://rang-cms-auth.ranglovesyou.workers.dev
+  base_url: https://rang-cms-auth.mparashar.workers.dev
 
 # Local testing only: with this enabled, run `npx decap-server` and open
 # the site over http://localhost — the CMS edits your local files and
@@ -28,8 +28,10 @@ collections:
         format: json
         fields:
           - { name: followers, label: "Follower count (e.g. 200k+)", widget: string }
-          - { name: tiktokViews, label: "Most viewed on TikTok", widget: string }
-          - { name: youtubeViews, label: "Most viewed on YouTube", widget: string }
+          - { name: tiktokViews, label: "Most viewed on TikTok (views)", widget: string }
+          - { name: youtubeViews, label: "Most viewed on YouTube (views)", widget: string }
+          - { name: tiktokVideoUrl, label: "Most viewed on TikTok — video link", widget: string, hint: "Paste the full TikTok video URL (e.g. https://www.tiktok.com/@ranglovesyou/video/7552630473793473847)" }
+          - { name: youtubeVideoUrl, label: "Most viewed on YouTube — video link", widget: string, hint: "Paste the full YouTube URL or Shorts URL (e.g. https://www.youtube.com/shorts/Tp09ELvtWJM)" }
 
   - name: latest-single
     label: "Latest Single"

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>RANG &mdash; DJ Portfolio</title>
+<style>
+  :root {
+    --primary: #FFCB05;
+    --primary-light: #FFD633;
+    --secondary: #00274C;
+    --bg-dark: #0A0E1A;
+    --bg-darker: #050810;
+    --text-light: #FFFFFF;
+    --text-dim: rgba(255, 255, 255, 0.7);
+    --border: rgba(255, 203, 5, 0.25);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg-dark);
+    color: var(--text-light);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    overflow: hidden;
+  }
+  @media print {
+    body * { display: none !important; }
+    body::after { content: "Printing this document is disabled."; display: block !important; padding: 40px; font: 18px sans-serif; }
+  }
+
+  /* Lock screen */
+  .gate {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(255, 203, 5, 0.08), transparent 40%),
+      radial-gradient(circle at 70% 80%, rgba(0, 39, 76, 0.5), transparent 50%),
+      var(--bg-dark);
+  }
+  .gate-card {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(21, 26, 38, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 28px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+  .gate-eyebrow {
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .gate-title {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .gate-sub {
+    color: var(--text-dim);
+    font-size: 13px;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  .gate-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+  }
+  .gate-input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(10, 14, 26, 0.6);
+    color: var(--text-light);
+    font-size: 15px;
+    letter-spacing: 1px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .gate-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(255, 203, 5, 0.15);
+  }
+  .gate-btn {
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: none;
+    background: var(--primary);
+    color: var(--secondary);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+  }
+  .gate-btn:hover { background: var(--primary-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(255, 203, 5, 0.35); }
+  .gate-btn:disabled { opacity: 0.6; cursor: progress; transform: none; box-shadow: none; }
+  .gate-error {
+    margin-top: 12px;
+    color: #ff7a7a;
+    font-size: 13px;
+    min-height: 18px;
+  }
+  .gate-foot {
+    margin-top: 20px;
+    color: var(--text-dim);
+    font-size: 11px;
+    line-height: 1.5;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 14px;
+  }
+
+  /* PDF viewer */
+  .viewer { display: none; height: 100vh; width: 100vw; background: #1a1a1a; flex-direction: column; }
+  .viewer.active { display: flex; }
+  .viewer-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 16px;
+    background: var(--bg-darker);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .viewer-title {
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .viewer-actions { display: flex; gap: 8px; }
+  .viewer-actions button {
+    background: rgba(255, 203, 5, 0.12);
+    color: var(--primary);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .viewer-actions button:hover { background: rgba(255, 203, 5, 0.22); }
+  .viewer-frame { flex: 1; width: 100%; border: none; background: #1a1a1a; }
+</style>
+</head>
+<body>
+
+<div class="gate" id="gate">
+  <div class="gate-card">
+    <div class="gate-eyebrow">Rang &middot; Private</div>
+    <h1 class="gate-title">DJ Portfolio</h1>
+    <p class="gate-sub">This document is shared confidentially with event organizers.<br>Enter the access password to continue.</p>
+    <form class="gate-form" id="gateForm" autocomplete="off">
+      <input class="gate-input" type="password" id="pw" placeholder="Password" autocomplete="off" autofocus>
+      <button class="gate-btn" id="gateBtn" type="submit">Unlock</button>
+    </form>
+    <div class="gate-error" id="gateError" role="alert"></div>
+    <div class="gate-foot">By accessing this document you agree to keep its contents confidential and not to reproduce or share its material.</div>
+  </div>
+</div>
+
+<div class="viewer" id="viewer">
+  <div class="viewer-bar">
+    <span class="viewer-title">Rang &middot; DJ Portfolio</span>
+    <div class="viewer-actions">
+      <button id="lockBtn" type="button">Lock</button>
+    </div>
+  </div>
+  <iframe class="viewer-frame" id="frame" title="Rang DJ Portfolio"></iframe>
+</div>
+
+<script>
+(function () {
+  const SALT_B64 = "__SALT_B64__";
+  const IV_B64 = "__IV_B64__";
+  const ITERATIONS = __ITERATIONS__;
+  const CIPHER_B64 = "__CIPHERTEXT_B64__";
+
+  const b64 = (s) => { const bin = atob(s); const a = new Uint8Array(bin.length); for (let i=0;i<bin.length;i++) a[i]=bin.charCodeAt(i); return a; };
+  const SALT = b64(SALT_B64);
+  const IV   = b64(IV_B64);
+
+  const gate    = document.getElementById('gate');
+  const viewer  = document.getElementById('viewer');
+  const form    = document.getElementById('gateForm');
+  const pw      = document.getElementById('pw');
+  const btn     = document.getElementById('gateBtn');
+  const err     = document.getElementById('gateError');
+  const frame   = document.getElementById('frame');
+  const lockBtn = document.getElementById('lockBtn');
+  let currentUrl = null;
+
+  async function deriveKey(password) {
+    const enc = new TextEncoder().encode(password);
+    const mat = await crypto.subtle.importKey('raw', enc, { name: 'PBKDF2' }, false, ['deriveKey']);
+    return crypto.subtle.deriveKey(
+      { name: 'PBKDF2', salt: SALT, iterations: ITERATIONS, hash: 'SHA-256' },
+      mat,
+      { name: 'AES-GCM', length: 256 },
+      false,
+      ['decrypt']
+    );
+  }
+
+  async function unlock(password) {
+    err.textContent = '';
+    btn.disabled = true;
+    btn.textContent = 'Unlocking…';
+    try {
+      const key = await deriveKey(password);
+      const ct = b64(CIPHER_B64);
+      const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: IV }, key, ct);
+      const blob = new Blob([plain], { type: 'application/pdf' });
+      if (currentUrl) URL.revokeObjectURL(currentUrl);
+      currentUrl = URL.createObjectURL(blob);
+      // #toolbar=0 hides Chrome/Edge/Firefox built-in toolbar (which contains download/print buttons).
+      // Safari ignores it — there's no way to hide its toolbar.
+      frame.src = currentUrl + '#toolbar=0&navpanes=0';
+      gate.style.display = 'none';
+      viewer.classList.add('active');
+    } catch (e) {
+      err.textContent = 'Incorrect password. Try again.';
+      pw.select();
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Unlock';
+    }
+  }
+
+  form.addEventListener('submit', (e) => { e.preventDefault(); unlock(pw.value); });
+  lockBtn.addEventListener('click', () => {
+    if (currentUrl) URL.revokeObjectURL(currentUrl);
+    currentUrl = null;
+    frame.src = 'about:blank';
+    viewer.classList.remove('active');
+    gate.style.display = '';
+    pw.value = '';
+    pw.focus();
+  });
+
+  // Friction: block right-click + drag on the viewer chrome (iframe content is sandboxed by browser anyway).
+  viewer.addEventListener('contextmenu', (e) => e.preventDefault());
+  viewer.addEventListener('dragstart', (e) => e.preventDefault());
+})();
+</script>
+
+</body>
+</html>

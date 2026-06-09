@@ -296,50 +296,6 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* Volume Toggle Button */
-.volume-toggle {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    z-index: 100;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: rgba(0, 39, 76, 0.7);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 203, 5, 0.3);
-    color: var(--primary);
-    font-size: 18px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: scale(0.8);
-    pointer-events: none;
-}
-
-.volume-toggle.visible {
-    opacity: 1;
-    transform: scale(1);
-    pointer-events: auto;
-}
-
-.volume-toggle:hover {
-    background: rgba(255, 203, 5, 0.2);
-    border-color: var(--primary);
-    transform: scale(1.1);
-}
-
-.volume-toggle.unmuted {
-    background: rgba(255, 203, 5, 0.3);
-    border-color: var(--primary);
-}
-
-.volume-toggle i {
-    pointer-events: none;
-}
 
 .video-overlay {
     position: absolute;
@@ -527,6 +483,46 @@ h1, h2, h3, h4, h5, h6 {
     border-color: var(--primary);
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 6px 16px rgba(255, 203, 5, 0.4);
+}
+
+.hero-stats {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+    margin-top: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1.2s;
+}
+
+.hero-content.visible .hero-stats {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-stat-number {
+    font-family: 'Poppins', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
+.hero-stat-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-light);
+    opacity: 0.7;
 }
 
 @keyframes buttonsFadeIn {
@@ -2752,13 +2748,19 @@ select.form-input option {
         font-size: 16px;
     }
 
-    .volume-toggle {
-        width: 42px;
-        height: 42px;
-        bottom: 16px;
-        right: 16px;
-        font-size: 16px;
+    .hero-stats {
+        gap: 32px;
+        margin-top: 16px;
     }
+
+    .hero-stat-number {
+        font-size: 32px;
+    }
+
+    .hero-stat-label {
+        font-size: 11px;
+    }
+
 
     .social-links-grid {
         grid-template-columns: 1fr;
@@ -3119,6 +3121,7 @@ select.form-input option {
                 <a href="#content" class="nav-link">Content</a>
                 <a href="#events" class="nav-link">Events</a>
                 <a href="#contact" class="nav-link">Contact</a>
+                <a href="portfolio" class="nav-link">Portfolio</a>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <span></span>
@@ -3135,9 +3138,6 @@ select.form-input option {
             <source src="media/Rang Event Recap (only Rang).mov" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <button class="volume-toggle" id="volumeToggle" aria-label="Toggle sound">
-            <i class="fas fa-volume-mute" id="volumeIcon"></i>
-        </button>
         <div class="hero-content visible" id="heroContent">
             <div class="hero-logo-container">
                 <img src="media/rangw@2.png" alt="RANG" class="hero-logo">
@@ -3153,6 +3153,16 @@ select.form-input option {
                 <a href="https://tr.ee/kZivS_Be0d" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                 <a href="https://tr.ee/MCJFdLaz9-" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
                 <a href="https://tr.ee/7QSS8lGclr" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Apple Music"><i class="fab fa-apple"></i></a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-stat="followers">210k+</span>
+                    <span class="hero-stat-label">Followers</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-stat="totalViews">200M+</span>
+                    <span class="hero-stat-label">Views</span>
+                </div>
             </div>
         </div>
     </section>
@@ -3245,37 +3255,12 @@ select.form-input option {
                     <div class="content-highlight-card">
                         <div class="content-highlight-title">Most Viewed on TikTok</div>
                         <div class="content-highlight-value" data-stat="tiktokViews">25M+ Views</div>
-                        <div class="content-highlight-embed">
-                            <script>
-                                  (function() {
-                                    const container = document.createElement("div");
-                                    container.innerHTML = `
-                                    <iframe 
-                                        src="https://www.tiktok.com/embed/v2/7552630473793473847" 
-                                        height="600" 
-                                        width="325" 
-                                        style="border: none;" 
-                                        allowfullscreen>
-                                    </iframe>
-                                    `;
-
-                                    document.currentScript.parentNode.insertBefore(container, document.currentScript.nextSibling);
-                                })();
-                                </script>
-                        </div>
+                        <div class="content-highlight-embed" data-embed="tiktok"></div>
                     </div>
                     <div class="content-highlight-card">
                         <div class="content-highlight-title">Most Viewed on YouTube</div>
                         <div class="content-highlight-value" data-stat="youtubeViews">30M+ Views</div>
-                        <div class="content-highlight-note" data-yt-subscribers style="display:none;"></div>
-                        <div class="content-highlight-embed">
-                            <iframe
-                                src="https://www.youtube.com/embed/Tp09ELvtWJM"
-                                title="Rang YouTube short"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen>
-                            </iframe>
-                        </div>
+                        <div class="content-highlight-embed" data-embed="youtube-short"></div>
                     </div>
                 </div>
 
@@ -3679,27 +3664,59 @@ TikTok
     </script>
     <script>
         /* ============================================================
-           CONFIG  — fill in your YouTube Data API key to enable the
-           live "latest videos" carousel + subscriber count.
-           Get a key at https://console.cloud.google.com (enable
-           "YouTube Data API v3"), then restrict it to your domain.
-           Leave it blank and the site falls back to the static videos.
+           CONFIG  — YouTube Data API key powers the auto-updating
+           latest-videos carousel. Get a key at console.cloud.google.com
+           (enable "YouTube Data API v3"), restrict it to your domain,
+           then paste below. Leave blank to fall back to the static
+           videos baked into the HTML.
            ============================================================ */
         const YOUTUBE_API_KEY = "AIzaSyCRNJvAjZgFnV5Yn6MdStizqGKkwn6HbYU";
         const YOUTUBE_CHANNEL_ID = "UCjzG1q3dd5A0-zM6i1r6rRw";
         const YOUTUBE_MAX_VIDEOS = 6;
+
+        /* ---------- helpers ---------- */
+        function extractTikTokId(s) {
+            if (!s) return null;
+            const m = String(s).match(/(\d{15,})/);
+            return m ? m[1] : null;
+        }
+        function extractYouTubeId(s) {
+            if (!s) return null;
+            const str = String(s).trim();
+            if (/^[A-Za-z0-9_-]{11}$/.test(str)) return str;
+            const m = str.match(/(?:v=|\/shorts\/|youtu\.be\/|\/embed\/)([A-Za-z0-9_-]{11})/);
+            return m ? m[1] : null;
+        }
 
         /* ---------- Editable content loader (Decap CMS) ---------- */
         (function loadSiteContent() {
             const json = (path) => fetch(path, { cache: "no-store" })
                 .then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
 
-            // Stats / follower numbers
+            // Stats / follower numbers + highlight embeds
             json("content/stats.json").then((stats) => {
                 document.querySelectorAll("[data-stat]").forEach((el) => {
                     const key = el.getAttribute("data-stat");
                     if (stats[key] != null) el.textContent = stats[key];
                 });
+
+                // Most-viewed TikTok embed
+                const tiktokId = extractTikTokId(stats.tiktokVideoUrl);
+                const tiktokEl = document.querySelector('[data-embed="tiktok"]');
+                if (tiktokEl && tiktokId) {
+                    tiktokEl.innerHTML = `<iframe src="https://www.tiktok.com/embed/v2/${tiktokId}"
+                        height="600" width="325" style="border:none;" allowfullscreen></iframe>`;
+                }
+
+                // Most-viewed YouTube short embed
+                const ytShortId = extractYouTubeId(stats.youtubeVideoUrl);
+                const ytShortEl = document.querySelector('[data-embed="youtube-short"]');
+                if (ytShortEl && ytShortId) {
+                    ytShortEl.innerHTML = `<iframe src="https://www.youtube.com/embed/${ytShortId}"
+                        title="Most viewed YouTube short" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>`;
+                }
             }).catch(() => {});
 
             // Latest single
@@ -3771,44 +3788,20 @@ TikTok
             }).catch(() => {});
         })();
 
-        /* ---------- YouTube Data API: latest videos + subscribers ---------- */
+        /* ---------- YouTube Data API: latest uploads ---------- */
         (function loadYouTube() {
             if (!YOUTUBE_API_KEY) return; // no key yet -> keep static fallback
 
-            const api = (endpoint, params) => {
-                const qs = new URLSearchParams(Object.assign({ key: YOUTUBE_API_KEY }, params));
-                return fetch(`https://www.googleapis.com/youtube/v3/${endpoint}?${qs}`)
-                    .then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
-            };
+            // The uploads playlist ID is deterministic: replace the leading "UC" with "UU".
+            const UPLOADS_PLAYLIST = "UU" + YOUTUBE_CHANNEL_ID.slice(2);
 
-            api("channels", { part: "contentDetails,statistics", id: YOUTUBE_CHANNEL_ID })
+            fetch(`https://www.googleapis.com/youtube/v3/playlistItems?` +
+                  `part=contentDetails&playlistId=${UPLOADS_PLAYLIST}` +
+                  `&maxResults=${YOUTUBE_MAX_VIDEOS}&key=${YOUTUBE_API_KEY}`)
+                .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
                 .then((data) => {
-                    const ch = data.items && data.items[0];
-                    if (!ch) return;
-
-                    // Subscriber count
-                    const subs = ch.statistics && ch.statistics.subscriberCount;
-                    const subEl = document.querySelector("[data-yt-subscribers]");
-                    if (subEl && subs) {
-                        subEl.textContent = Number(subs).toLocaleString() + " subscribers";
-                        subEl.style.display = "";
-                    }
-
-                    // Latest uploads -> rebuild carousel
-                    const uploads = ch.contentDetails &&
-                        ch.contentDetails.relatedPlaylists &&
-                        ch.contentDetails.relatedPlaylists.uploads;
-                    if (!uploads) return;
-                    return api("playlistItems", {
-                        part: "snippet",
-                        playlistId: uploads,
-                        maxResults: YOUTUBE_MAX_VIDEOS
-                    });
-                })
-                .then((data) => {
-                    if (!data || !data.items || !data.items.length) return;
-                    const ids = data.items
-                        .map((it) => it.snippet && it.snippet.resourceId && it.snippet.resourceId.videoId)
+                    const ids = (data.items || [])
+                        .map((it) => it.contentDetails && it.contentDetails.videoId)
                         .filter(Boolean);
                     if (!ids.length) return;
 

@@ -34,3 +34,6 @@ package-lock.json
 yarn.lock
 
 .claude/
+
+# Plaintext source for the encrypted portfolio page — never commit.
+portfolio/source.pdf
