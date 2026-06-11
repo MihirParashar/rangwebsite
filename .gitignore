@@ -36,4 +36,4 @@ yarn.lock
 .claude/
 
 # Plaintext source for the encrypted portfolio page — never commit.
-portfolio/source.pdf
+portfolio/source.*
