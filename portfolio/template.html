@@ -9,6 +9,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5LTQNCTRJV"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5LTQNCTRJV', { anonymize_ip: true });
+</script>
 <style>
   :root {
     --primary: #FFCB05;
@@ -378,7 +387,7 @@
       <button class="gate-btn" id="gateBtn" type="submit">Unlock</button>
     </form>
     <div class="gate-error" id="gateError" role="alert"></div>
-    <div class="gate-foot">By accessing this document you agree to keep its contents confidential and not to reproduce or share its material.</div>
+    <div class="gate-foot">By accessing this document you agree to keep its contents confidential and not to reproduce or share its material. See our <a href="/privacy.html" target="_blank" rel="noopener" style="color: var(--primary);">Privacy Policy</a>.</div>
   </div>
 </div>
 
@@ -461,6 +470,9 @@
       viewer.classList.add('active');
       window.scrollTo(0, 0);
       loadPortfolioVideos();
+      if (typeof gtag === 'function') {
+        gtag('event', 'portfolio_unlock', { event_category: 'engagement' });
+      }
     } catch (e) {
       err.textContent = 'Incorrect password. Try again.';
       pw.select();
