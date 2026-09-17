@@ -13,7 +13,7 @@
   ],
   "soldOutMessage": "Sold out. Follow @ranglovesyou for the next drop.",
   "images": [
-    "media/merch/bboty.jpg",
+    "media/merch/bboty.png",
     "media/merch/bboty-promo.mp4",
     "media/merch/bboty-3.jpg",
     "media/merch/bboty-1.jpg",
@@ -24,9 +24,25 @@
     "media/merch/bboty-7.jpg"
   ],
   "sizes": [
-    { "size": "S", "stripeLink": "", "soldOut": false },
-    { "size": "M", "stripeLink": "", "soldOut": false },
-    { "size": "L", "stripeLink": "", "soldOut": false },
-    { "size": "XL", "stripeLink": "", "soldOut": false }
+    {
+      "size": "S",
+      "stripeLink": "",
+      "soldOut": false
+    },
+    {
+      "size": "M",
+      "stripeLink": "",
+      "soldOut": false
+    },
+    {
+      "size": "L",
+      "stripeLink": "",
+      "soldOut": false
+    },
+    {
+      "size": "XL",
+      "stripeLink": "",
+      "soldOut": false
+    }
   ]
 }
