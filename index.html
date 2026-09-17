@@ -1465,7 +1465,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Shop Section */
 .shop {
-    background: var(--bg-darker);
+    background: var(--bg-dark);
     padding: 120px 0;
 }
 
@@ -1499,17 +1499,20 @@ h1, h2, h3, h4, h5, h6 {
     aspect-ratio: 4 / 5;
     border-radius: 16px;
     overflow: hidden;
-    background: var(--bg-light);
+    background: #000;
     border: 1px solid var(--border);
     box-shadow: 0 12px 44px rgba(0, 0, 0, 0.45);
 }
 
-.shop-main-image img {
+/* Gallery mixes a landscape flat-lay, portrait lifestyle shots and a 4:5
+   video, so contain everything rather than cropping the product out. */
+.shop-main-image img,
+.shop-main-image video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
-    transition: opacity 0.25s ease;
+    background: #000;
 }
 
 .shop-thumbs {
@@ -1535,6 +1538,36 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+.shop-thumb.is-video { position: relative; }
+
+.shop-thumb.is-video::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1.5px solid rgba(255, 255, 255, 0.9);
+    pointer-events: none;
+}
+
+.shop-thumb.is-video::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 0 6px 10px;
+    border-color: transparent transparent transparent #fff;
+    pointer-events: none;
 }
 
 .shop-thumb:hover { opacity: 0.85; transform: translateY(-2px); }
@@ -3405,9 +3438,9 @@ select.form-input option {
             </a>
             <div class="nav-links">
                 <a href="#home" class="nav-link">Home</a>
+                <a href="#shop" class="nav-link">Shop</a>
                 <a href="#about" class="nav-link">About</a>
                 <a href="#content" class="nav-link">Content</a>
-                <a href="#shop" class="nav-link">Shop</a>
                 <a href="#events" class="nav-link">Events</a>
                 <a href="#contact" class="nav-link">Contact</a>
                 <a href="portfolio" class="nav-link">Portfolio</a>
@@ -3455,6 +3488,16 @@ select.form-input option {
             </div>
         </div>
     </section>
+    <!-- Shop Section -->
+    <section id="shop" class="section shop">
+        <div class="container">
+            <h2 class="section-title">Merch</h2>
+            <div class="shop-product" data-merch-root>
+                <div class="shop-loading">Loading&hellip;</div>
+            </div>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section id="about" class="section about">
         <div class="container">
@@ -3659,16 +3702,6 @@ TikTok
                         </a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Shop Section -->
-    <section id="shop" class="section shop">
-        <div class="container">
-            <h2 class="section-title">Merch</h2>
-            <div class="shop-product" data-merch-root>
-                <div class="shop-loading">Loading&hellip;</div>
             </div>
         </div>
     </section>
@@ -4096,9 +4129,17 @@ TikTok
                 }[c]));
 
                 const images = Array.isArray(m.images) ? m.images : [];
+                const isVideo = (src) => /\.(mp4|webm|mov)$/i.test(src);
+                const posterOf = (src) => src.replace(/\.(mp4|webm|mov)$/i, "-poster.jpg");
                 // Small versions live alongside in a thumbs/ subfolder. If one is
                 // missing (e.g. a photo added via the CMS) we fall back to the full file.
-                const thumbOf = (src) => src.replace(/([^/]+)$/, "thumbs/$1");
+                const thumbOf = (src) => src
+                    .replace(/\.(mp4|webm|mov)$/i, ".jpg")
+                    .replace(/([^/]+)$/, "thumbs/$1");
+                const renderMain = (src) => isVideo(src)
+                    ? `<video data-shop-main src="${esc(src)}" poster="${esc(posterOf(src))}"
+                              controls playsinline preload="metadata"></video>`
+                    : `<img data-shop-main src="${esc(src)}" alt="${esc(m.name)}" loading="lazy">`;
                 const sizes = Array.isArray(m.sizes) ? m.sizes : [];
                 // A size is only "gone" when explicitly marked sold out. A blank
                 // Stripe link just means checkout isn't wired up for it yet.
@@ -4106,14 +4147,15 @@ TikTok
 
                 root.innerHTML = `
                     <div class="shop-gallery">
-                        <div class="shop-main-image">
-                            <img data-shop-main src="${esc(images[0] || "")}" alt="${esc(m.name)}" loading="lazy">
+                        <div class="shop-main-image" data-shop-main-slot>
+                            ${renderMain(images[0] || "")}
                         </div>
                         ${images.length > 1 ? `
                         <div class="shop-thumbs">
                             ${images.map((src, i) => `
-                                <button type="button" class="shop-thumb${i === 0 ? " active" : ""}"
-                                        data-shop-thumb="${esc(src)}" aria-label="View photo ${i + 1}">
+                                <button type="button" class="shop-thumb${i === 0 ? " active" : ""}${isVideo(src) ? " is-video" : ""}"
+                                        data-shop-thumb="${esc(src)}"
+                                        aria-label="${isVideo(src) ? "Play promo video" : "View photo " + (i + 1)}">
                                     <img src="${esc(thumbOf(src))}" alt="" loading="lazy">
                                 </button>`).join("")}
                         </div>` : ""}
@@ -4155,13 +4197,14 @@ TikTok
                     });
                 });
 
-                // Gallery thumbnail switching
-                const mainImg = root.querySelector("[data-shop-main]");
+                // Gallery thumbnail switching (swaps the whole slot so a photo can
+                // be replaced by the promo video and vice versa)
+                const mainSlot = root.querySelector("[data-shop-main-slot]");
                 root.querySelectorAll("[data-shop-thumb]").forEach((btn) => {
                     btn.addEventListener("click", () => {
                         root.querySelectorAll("[data-shop-thumb]").forEach((b) => b.classList.remove("active"));
                         btn.classList.add("active");
-                        if (mainImg) mainImg.src = btn.getAttribute("data-shop-thumb");
+                        if (mainSlot) mainSlot.innerHTML = renderMain(btn.getAttribute("data-shop-thumb"));
                     });
                 });
 

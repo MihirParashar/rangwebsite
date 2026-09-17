@@ -13,11 +13,15 @@
   ],
   "soldOutMessage": "Sold out. Follow @ranglovesyou for the next drop.",
   "images": [
+    "media/merch/bboty.jpg",
+    "media/merch/bboty-promo.mp4",
     "media/merch/bboty-3.jpg",
     "media/merch/bboty-1.jpg",
     "media/merch/bboty-8.jpg",
     "media/merch/bboty-2.jpg",
-    "media/merch/bboty-4.jpg"
+    "media/merch/bboty-4.jpg",
+    "media/merch/bboty-6.jpg",
+    "media/merch/bboty-7.jpg"
   ],
   "sizes": [
     { "size": "S", "stripeLink": "", "soldOut": false },

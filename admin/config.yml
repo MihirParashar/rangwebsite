@@ -74,9 +74,9 @@ collections:
             field: { name: detail, label: "Detail", widget: string }
           - { name: soldOutMessage, label: "Message shown when fully sold out", widget: string }
           - name: images
-            label: "Photos"
+            label: "Photos & video"
             widget: list
-            field: { name: image, label: "Image path (e.g. media/merch/bboty-3.jpg)", widget: string }
+            field: { name: image, label: "File path", widget: string, hint: "e.g. media/merch/bboty-3.jpg, or an .mp4 to show a video in the gallery" }
           - name: sizes
             label: "Sizes"
             widget: list
