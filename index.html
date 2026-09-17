@@ -1512,10 +1512,11 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
 }
 
-/* Transparent product cutouts: show the whole shirt on the card background */
+/* Transparent product cutouts (the flat-lay). Change scale() to resize:
+   1 = shirt fits the frame width, higher = bigger (sleeves start cutting off). */
 .shop-main-image img.is-cutout {
     object-fit: contain;
-    padding: 3%;
+    transform: scale(1.25);
 }
 
 .shop-thumbs {
@@ -4233,14 +4234,9 @@ TikTok
                     });
                 });
             }).catch((err) => {
-                // Never leave the section stuck on "Loading...". If the content
-                // file is missing or unreachable, hide the shop entirely.
                 console.warn("Merch content unavailable:", err);
-                const section = document.getElementById("shop");
-                if (section) section.style.display = "none";
-                document.querySelectorAll('a[href="#shop"]').forEach((a) => {
-                    a.style.display = "none";
-                });
+                const root = document.querySelector("[data-merch-root]");
+                if (root) root.innerHTML = '<div class="shop-loading">Couldn\'t load content/merch.json. Check the browser console.</div>';
             });
         })();
 
