@@ -4,7 +4,7 @@
   "tagline": "Limited Drop",
   "price": "$30",
   "priceNote": "+ shipping",
-  "description": "Black heavyweight tee. Only 50 made.",
+  "description": "Black heavyweight tee. While supplies last.",
   "details": [
     "100% cotton",
     "Oversized fit",
@@ -17,9 +17,7 @@
     "media/merch/bboty-1.jpg",
     "media/merch/bboty-8.jpg",
     "media/merch/bboty-2.jpg",
-    "media/merch/bboty-4.jpg",
-    "media/merch/bboty-6.jpg",
-    "media/merch/bboty-7.jpg"
+    "media/merch/bboty-4.jpg"
   ],
   "sizes": [
     { "size": "S", "stripeLink": "", "soldOut": false },
