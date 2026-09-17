@@ -1463,6 +1463,285 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+/* Shop Section */
+.shop {
+    background: var(--bg-darker);
+    padding: 120px 0;
+}
+
+.shop-product {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.shop-loading {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--text-muted);
+    padding: 40px 0;
+    font-size: 14px;
+}
+
+.shop-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.shop-main-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    box-shadow: 0 12px 44px rgba(0, 0, 0, 0.45);
+}
+
+.shop-main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.25s ease;
+}
+
+.shop-thumbs {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.shop-thumb {
+    aspect-ratio: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--bg-light);
+    cursor: pointer;
+    padding: 0;
+    opacity: 0.5;
+    transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.shop-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.shop-thumb:hover { opacity: 0.85; transform: translateY(-2px); }
+.shop-thumb.active { opacity: 1; border-color: var(--primary); }
+
+.shop-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.shop-badge {
+    align-self: flex-start;
+    background: rgba(255, 203, 5, 0.14);
+    border: 1px solid var(--border);
+    color: var(--primary);
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+}
+
+.shop-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 14px;
+}
+
+.shop-price {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.shop-price-amount {
+    font-family: 'Outfit', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+}
+
+.shop-price-note {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.shop-description {
+    font-size: 16px;
+    color: var(--text-dim);
+    line-height: 1.75;
+    margin-bottom: 22px;
+}
+
+.shop-details {
+    list-style: none;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.shop-details li {
+    font-size: 14px;
+    color: var(--text-dim);
+    padding-left: 22px;
+    position: relative;
+    line-height: 1.5;
+}
+
+.shop-details li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--primary);
+}
+
+.shop-size-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+}
+
+.shop-sizes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 26px;
+}
+
+.shop-size {
+    min-width: 60px;
+    padding: 12px 18px;
+    background: rgba(0, 39, 76, 0.35);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text-light);
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.shop-size:hover:not(:disabled) {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.shop-size.selected {
+    background: var(--primary);
+    color: var(--secondary);
+    border-color: var(--primary);
+    font-weight: 800;
+}
+
+.shop-size:disabled {
+    opacity: 0.32;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+.shop-buy {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 16px 28px;
+    background: var(--primary);
+    color: var(--secondary);
+    border: none;
+    border-radius: 12px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(255, 203, 5, 0.3);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.shop-buy:hover:not(.disabled) {
+    background: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 203, 5, 0.45);
+}
+
+.shop-buy.disabled {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    box-shadow: none;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.shop-note {
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.6;
+}
+
+.shop-soldout-banner {
+    padding: 20px 22px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-dim);
+    font-size: 15px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+    .shop-product {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        max-width: 560px;
+    }
+}
+
+@media (max-width: 768px) {
+    .shop { padding: 60px 0 50px; }
+    .shop-thumbs { grid-template-columns: repeat(4, 1fr); }
+    .shop-price-amount { font-size: 28px; }
+}
+
 /* Events Section */
 .events {
     background: var(--bg-darker);
@@ -3128,6 +3407,7 @@ select.form-input option {
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#about" class="nav-link">About</a>
                 <a href="#content" class="nav-link">Content</a>
+                <a href="#shop" class="nav-link">Shop</a>
                 <a href="#events" class="nav-link">Events</a>
                 <a href="#contact" class="nav-link">Contact</a>
                 <a href="portfolio" class="nav-link">Portfolio</a>
@@ -3154,7 +3434,7 @@ select.form-input option {
             <p class="hero-subtitle">Artist • Content Creator • Touring DJ</p>
             <div class="hero-buttons">
                 <a href="#content" class="btn btn-primary">Watch Content</a>
-                <a href="#events" class="btn btn-secondary">Latest Events</a>
+                <a href="#shop" class="btn btn-secondary">Buy Merch</a>
             </div>
             <div class="hero-social">
                 <a href="https://www.youtube.com/@ranglovesyou" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
@@ -3379,6 +3659,16 @@ TikTok
                         </a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section id="shop" class="section shop">
+        <div class="container">
+            <h2 class="section-title">Merch</h2>
+            <div class="shop-product" data-merch-root>
+                <div class="shop-loading">Loading&hellip;</div>
             </div>
         </div>
     </section>
@@ -3795,6 +4085,105 @@ TikTok
                             </div>`).join("")}
                     </div>`;
             }).catch(() => {});
+
+            // Merch / shop
+            json("content/merch.json").then((m) => {
+                const root = document.querySelector("[data-merch-root]");
+                if (!root) return;
+
+                const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({
+                    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+                }[c]));
+
+                const images = Array.isArray(m.images) ? m.images : [];
+                const sizes = Array.isArray(m.sizes) ? m.sizes : [];
+                // A size is only "gone" when explicitly marked sold out. A blank
+                // Stripe link just means checkout isn't wired up for it yet.
+                const allGone = m.available === false || (sizes.length > 0 && sizes.every((s) => s.soldOut));
+
+                root.innerHTML = `
+                    <div class="shop-gallery">
+                        <div class="shop-main-image">
+                            <img data-shop-main src="${esc(images[0] || "")}" alt="${esc(m.name)}">
+                        </div>
+                        ${images.length > 1 ? `
+                        <div class="shop-thumbs">
+                            ${images.map((src, i) => `
+                                <button type="button" class="shop-thumb${i === 0 ? " active" : ""}"
+                                        data-shop-thumb="${esc(src)}" aria-label="View photo ${i + 1}">
+                                    <img src="${esc(src)}" alt="">
+                                </button>`).join("")}
+                        </div>` : ""}
+                    </div>
+                    <div class="shop-info">
+                        ${m.tagline ? `<span class="shop-badge">${esc(m.tagline)}</span>` : ""}
+                        <h3 class="shop-name">${esc(m.name)}</h3>
+                        <div class="shop-price">
+                            <span class="shop-price-amount">${esc(m.price)}</span>
+                            ${m.priceNote ? `<span class="shop-price-note">${esc(m.priceNote)}</span>` : ""}
+                        </div>
+                        ${m.description ? `<p class="shop-description">${esc(m.description)}</p>` : ""}
+                        ${Array.isArray(m.details) && m.details.length ? `
+                            <ul class="shop-details">
+                                ${m.details.map((d) => `<li>${esc(d)}</li>`).join("")}
+                            </ul>` : ""}
+                        ${allGone ? `
+                            <div class="shop-soldout-banner">${esc(m.soldOutMessage || "Sold out.")}</div>
+                        ` : `
+                            <div class="shop-size-label">Select a size</div>
+                            <div class="shop-sizes">
+                                ${sizes.map((s) => `
+                                    <button type="button" class="shop-size"
+                                            data-shop-size="${esc(s.size)}"
+                                            data-shop-link="${esc(s.stripeLink || "")}"
+                                            ${s.soldOut ? "disabled" : ""}>${esc(s.size)}</button>`).join("")}
+                            </div>
+                            <a class="shop-buy disabled" data-shop-buy role="button">Select a size</a>
+                            <p class="shop-note">Secure checkout via Stripe.</p>
+                        `}
+                    </div>`;
+
+                // Gallery thumbnail switching
+                const mainImg = root.querySelector("[data-shop-main]");
+                root.querySelectorAll("[data-shop-thumb]").forEach((btn) => {
+                    btn.addEventListener("click", () => {
+                        root.querySelectorAll("[data-shop-thumb]").forEach((b) => b.classList.remove("active"));
+                        btn.classList.add("active");
+                        if (mainImg) mainImg.src = btn.getAttribute("data-shop-thumb");
+                    });
+                });
+
+                // Size selection -> buy button
+                const buyBtn = root.querySelector("[data-shop-buy]");
+                root.querySelectorAll("[data-shop-size]").forEach((btn) => {
+                    btn.addEventListener("click", () => {
+                        root.querySelectorAll("[data-shop-size]").forEach((b) => b.classList.remove("selected"));
+                        btn.classList.add("selected");
+                        if (!buyBtn) return;
+                        const link = btn.getAttribute("data-shop-link");
+                        if (link) {
+                            buyBtn.classList.remove("disabled");
+                            buyBtn.setAttribute("href", link);
+                            buyBtn.setAttribute("target", "_blank");
+                            buyBtn.setAttribute("rel", "noopener noreferrer");
+                            buyBtn.textContent = "Buy Now";
+                        } else {
+                            buyBtn.classList.add("disabled");
+                            buyBtn.removeAttribute("href");
+                            buyBtn.textContent = "Coming soon";
+                        }
+                    });
+                });
+            }).catch((err) => {
+                // Never leave the section stuck on "Loading...". If the content
+                // file is missing or unreachable, hide the shop entirely.
+                console.warn("Merch content unavailable:", err);
+                const section = document.getElementById("shop");
+                if (section) section.style.display = "none";
+                document.querySelectorAll('a[href="#shop"]').forEach((a) => {
+                    a.style.display = "none";
+                });
+            });
         })();
 
         /* ---------- YouTube Data API: latest uploads ---------- */

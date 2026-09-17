@@ -30,8 +30,8 @@ collections:
           - { name: followers, label: "Follower count (e.g. 200k+)", widget: string }
           - { name: tiktokViews, label: "Most viewed on TikTok (views)", widget: string }
           - { name: youtubeViews, label: "Most viewed on YouTube (views)", widget: string }
-          - { name: tiktokVideoUrl, label: "Most viewed on TikTok — video link", widget: string, hint: "Paste the full TikTok video URL (e.g. https://www.tiktok.com/@ranglovesyou/video/7552630473793473847)" }
-          - { name: youtubeVideoUrl, label: "Most viewed on YouTube — video link", widget: string, hint: "Paste the full YouTube URL or Shorts URL (e.g. https://www.youtube.com/shorts/Tp09ELvtWJM)" }
+          - { name: tiktokVideoUrl, label: "Most viewed on TikTok: video link", widget: string, hint: "Paste the full TikTok video URL (e.g. https://www.tiktok.com/@ranglovesyou/video/7552630473793473847)" }
+          - { name: youtubeVideoUrl, label: "Most viewed on YouTube: video link", widget: string, hint: "Paste the full YouTube URL or Shorts URL (e.g. https://www.youtube.com/shorts/Tp09ELvtWJM)" }
 
   - name: latest-single
     label: "Latest Single"
@@ -52,6 +52,39 @@ collections:
               - { name: platform, label: "Platform name", widget: string }
               - { name: logo, label: "Logo image file", widget: string, required: false }
               - { name: url, label: "Link URL", widget: string }
+
+  - name: merch
+    label: "Merch / Shop"
+    files:
+      - name: merch
+        label: "T-Shirt"
+        file: "content/merch.json"
+        format: json
+        fields:
+          - { name: available, label: "Show as available (uncheck to force Sold Out)", widget: boolean, default: true }
+          - { name: name, label: "Product name", widget: string }
+          - { name: tagline, label: "Badge text (e.g. Limited Drop)", widget: string, required: false }
+          - { name: price, label: "Price (e.g. $30)", widget: string }
+          - { name: priceNote, label: "Price note (e.g. + shipping)", widget: string, required: false }
+          - { name: description, label: "Description", widget: text }
+          - name: details
+            label: "Detail bullets"
+            widget: list
+            required: false
+            field: { name: detail, label: "Detail", widget: string }
+          - { name: soldOutMessage, label: "Message shown when fully sold out", widget: string }
+          - name: images
+            label: "Photos"
+            widget: list
+            field: { name: image, label: "Image path (e.g. media/merch/bboty-3.jpg)", widget: string }
+          - name: sizes
+            label: "Sizes"
+            widget: list
+            summary: "{{fields.size}}"
+            fields:
+              - { name: size, label: "Size label (S, M, L, XL)", widget: string }
+              - { name: stripeLink, label: "Stripe Payment Link URL", widget: string, required: false, hint: "Paste the Payment Link for this size. Leave blank until created." }
+              - { name: soldOut, label: "Sold out", widget: boolean, default: false }
 
   - name: portfolio-videos
     label: "Portfolio Videos (private page)"
@@ -84,7 +117,7 @@ collections:
             label: "Upcoming shows"
             widget: list
             required: false
-            summary: "{{fields.date}} — {{fields.title}}"
+            summary: "{{fields.date}}: {{fields.title}}"
             fields:
               - { name: title, label: "Event name", widget: string }
               - { name: date, label: "Date (e.g. Aug 14, 2026)", widget: string }
