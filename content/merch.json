@@ -1,28 +1,15 @@
 {
-  "available": true,
-  "name": "Brown Boy of the Year Tee",
-  "tagline": "Limited Drop",
-  "price": "$30",
-  "priceNote": "+ shipping",
-  "description": "Black heavyweight tee. While supplies last.",
   "details": [
     "100% cotton",
     "Oversized fit",
     "Screen-printed front graphic",
     "Ships in 3 to 5 business days"
   ],
+  "price": "$20",
+  "available": true,
+  "name": "Brown Boy of the Year Tee",
   "soldOutMessage": "Sold out. Follow @ranglovesyou for the next drop.",
-  "images": [
-    "media/merch/bboty.png",
-    "media/merch/bboty-promo.mp4",
-    "media/merch/bboty-3.jpg",
-    "media/merch/bboty-1.jpg",
-    "media/merch/bboty-8.jpg",
-    "media/merch/bboty-2.jpg",
-    "media/merch/bboty-4.jpg",
-    "media/merch/bboty-6.jpg",
-    "media/merch/bboty-7.jpg"
-  ],
+  "tagline": "Limited Drop",
   "sizes": [
     {
       "size": "S",
@@ -44,5 +31,18 @@
       "stripeLink": "",
       "soldOut": false
     }
-  ]
+  ],
+  "images": [
+    "media/merch/bboty.png",
+    "media/merch/bboty-promo.mp4",
+    "media/merch/bboty-3.jpg",
+    "media/merch/bboty-1.jpg",
+    "media/merch/bboty-8.jpg",
+    "media/merch/bboty-2.jpg",
+    "media/merch/bboty-4.jpg",
+    "media/merch/bboty-6.jpg",
+    "media/merch/bboty-7.jpg"
+  ],
+  "priceNote": "+ shipping",
+  "description": "Black heavyweight tee. While supplies last."
 }
