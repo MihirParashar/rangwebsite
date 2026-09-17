@@ -7,11 +7,48 @@ const volumeToggle = document.getElementById('volumeToggle');
 const volumeIcon = document.getElementById('volumeIcon');
 let hasTransitioned = false;
 
-// Video autoplay - keep it simple, muted videos autoplay reliably
+// Video autoplay. Mobile only permits it while muted, and can still refuse
+// (Low Power Mode, data saver, or the video not being decodable yet), in which
+// case iOS paints its own play-button overlay. Retry on readiness, on tab
+// visibility, and finally on the first user gesture.
+let heroGestureHooked = false;
+
+function hookHeroGestureResume() {
+    if (heroGestureHooked || !heroVideo) return;
+    heroGestureHooked = true;
+    const events = ['touchstart', 'pointerdown', 'click', 'scroll'];
+    const cleanup = () => events.forEach((ev) => window.removeEventListener(ev, resume));
+    // Only stop listening once playback actually starts, so an early scroll
+    // that isn't a real user gesture doesn't burn the one chance to recover.
+    const resume = () => {
+        heroVideo.muted = true;
+        heroVideo.play().then(cleanup).catch(() => {});
+    };
+    events.forEach((ev) => window.addEventListener(ev, resume, { passive: true }));
+}
+
+function attemptHeroPlay() {
+    if (!heroVideo) return;
+    heroVideo.muted = true;
+    const attempt = heroVideo.play();
+    if (attempt && typeof attempt.catch === 'function') {
+        attempt.catch(hookHeroGestureResume);
+    }
+}
+
 if (heroVideo) {
     heroVideo.muted = true;
+    heroVideo.setAttribute('muted', '');
+    heroVideo.playsInline = true;
+    heroVideo.setAttribute('playsinline', '');
     heroVideo.volume = 0.7;
-    heroVideo.play();
+
+    attemptHeroPlay();
+    heroVideo.addEventListener('loadeddata', attemptHeroPlay);
+    heroVideo.addEventListener('canplay', attemptHeroPlay);
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden && heroVideo.paused) attemptHeroPlay();
+    });
 }
 
 // Volume toggle functionality
@@ -50,7 +87,7 @@ function transitionToWebsite() {
     if (heroVideo) {
         heroVideo.loop = true;
         if (heroVideo.paused) {
-            heroVideo.play();
+            attemptHeroPlay();
         }
     }
     
