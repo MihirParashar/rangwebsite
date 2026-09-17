@@ -3424,7 +3424,7 @@ select.form-input option {
     <section id="home" class="section hero">
         <div class="video-overlay"></div>
         <video autoplay playsinline muted loop preload="auto" class="hero-video" id="heroVideo">
-            <source src="media/Rang Event Recap (only Rang).mov" type="video/mp4">
+            <source src="media/Rang Event Recap.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <div class="hero-content visible" id="heroContent">
@@ -3479,16 +3479,16 @@ select.form-input option {
                 </div>
                 <div class="about-photos">
                     <div class="photo-container tile tile--hero">
-                        <img src="media/Rang Profile Pic.jpg" alt="Rang Profile">
+                        <img src="media/Rang Profile Pic.jpg" alt="Rang Profile" loading="lazy">
                     </div>
                     <div class="photo-container tile tile--top">
-                        <img src="media/rangabt_2.jpg" alt="Rang Performance">
+                        <img src="media/rangabt_2.jpg" alt="Rang Performance" loading="lazy">
                     </div>
                     <div class="photo-container tile tile--mid">
-                        <img src="media/rangabt_3.png" alt="Rang Stage">
+                        <img src="media/rangabt_3.jpg" alt="Rang Stage" loading="lazy">
                     </div>
                     <div class="photo-container tile tile--wide">
-                        <img src="media/CSV3993.jpg" alt="Rang Event">
+                        <img src="media/CSV3993.jpg" alt="Rang Event" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -3689,7 +3689,7 @@ TikTok
                         </h3>
                         <div class="events-media-grid">
                             <div class="events-media-card">
-                                <img src="media/Rang%20Tour%20Graphic.png" alt="Rang tour graphic">
+                                <img src="media/Rang%20Tour%20Graphic.jpg" alt="Rang tour graphic" loading="lazy">
                             </div>
                             <div class="events-media-card">
                                 <video src="media/Tore%20Up.mp4" autoplay muted loop playsinline preload="metadata"></video>
@@ -3836,7 +3836,7 @@ TikTok
         <div class="container">
             <div class="footer-content">
                 <!-- <div class="footer-logo">
-                    <img src="media/ranglogo.PNG" alt="RANG" class="footer-logo-img">
+                    <img src="media/ranglogo.PNG" alt="RANG" class="footer-logo-img" loading="lazy">
                 </div> -->
                 <div class="footer-social">
                     <a href="https://www.youtube.com/@ranglovesyou" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
@@ -4096,6 +4096,9 @@ TikTok
                 }[c]));
 
                 const images = Array.isArray(m.images) ? m.images : [];
+                // Small versions live alongside in a thumbs/ subfolder. If one is
+                // missing (e.g. a photo added via the CMS) we fall back to the full file.
+                const thumbOf = (src) => src.replace(/([^/]+)$/, "thumbs/$1");
                 const sizes = Array.isArray(m.sizes) ? m.sizes : [];
                 // A size is only "gone" when explicitly marked sold out. A blank
                 // Stripe link just means checkout isn't wired up for it yet.
@@ -4104,14 +4107,14 @@ TikTok
                 root.innerHTML = `
                     <div class="shop-gallery">
                         <div class="shop-main-image">
-                            <img data-shop-main src="${esc(images[0] || "")}" alt="${esc(m.name)}">
+                            <img data-shop-main src="${esc(images[0] || "")}" alt="${esc(m.name)}" loading="lazy">
                         </div>
                         ${images.length > 1 ? `
                         <div class="shop-thumbs">
                             ${images.map((src, i) => `
                                 <button type="button" class="shop-thumb${i === 0 ? " active" : ""}"
                                         data-shop-thumb="${esc(src)}" aria-label="View photo ${i + 1}">
-                                    <img src="${esc(src)}" alt="">
+                                    <img src="${esc(thumbOf(src))}" alt="" loading="lazy">
                                 </button>`).join("")}
                         </div>` : ""}
                     </div>
@@ -4142,6 +4145,15 @@ TikTok
                             <p class="shop-note">Secure checkout via Stripe.</p>
                         `}
                     </div>`;
+
+                // Fall back to the full-size photo if a thumbnail is missing
+                root.querySelectorAll("[data-shop-thumb] img").forEach((img) => {
+                    img.addEventListener("error", function onMissingThumb() {
+                        img.removeEventListener("error", onMissingThumb);
+                        const full = img.closest("[data-shop-thumb]").getAttribute("data-shop-thumb");
+                        if (full) img.src = full;
+                    });
+                });
 
                 // Gallery thumbnail switching
                 const mainImg = root.querySelector("[data-shop-main]");

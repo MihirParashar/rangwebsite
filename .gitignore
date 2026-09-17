@@ -40,3 +40,5 @@ portfolio/source.*
 
 # Raw merch shoot originals (huge). Web-sized copies live in media/merch/.
 tshirt_media/
+# Local backups of pre-optimization media originals
+media/_originals/
