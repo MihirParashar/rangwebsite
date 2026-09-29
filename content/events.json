@@ -1,5 +1,12 @@
 {
-  "emptyMessage": "No events as of now.",
+  "emptyMessage": "OPENING FOR NAV IN AUSTIN - SEPT 30th",
   "bookingNote": "Interested in hosting an event with Rang? Fill out the Booking section below.",
-  "upcoming": []
+  "upcoming": [
+    {
+      "title": "NAV",
+      "date": "Sept 30, 2026",
+      "venue": "NAYA - AUSTIN, TX",
+      "ticketUrl": "https://www.tickettailor.com/events/texaschapterofacaciafraternity/2433794"
+    }
+  ]
 }
