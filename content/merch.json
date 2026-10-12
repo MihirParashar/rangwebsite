@@ -23,7 +23,7 @@
     },
     {
       "size": "L",
-      "stripeLink": "",
+      "stripeLink": "https://buy.stripe.com/6oUfZg5YMbY198j2ob5wI00",
       "soldOut": false
     },
     {
@@ -43,6 +43,6 @@
     "media/merch/bboty-6.jpg",
     "media/merch/bboty-7.jpg"
   ],
-  "priceNote": "+ shipping",
+  "priceNote": "",
   "description": "Black heavyweight tee. While supplies last."
 }
